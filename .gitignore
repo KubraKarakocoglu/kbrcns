@@ -1,0 +1,46 @@
+# --- Yerel içerik: yalnızca o bilgisayarda kalır ---
+Yerel/*
+!Yerel/BENI-OKU.md
+
+# --- Telif ve boyut: kitap, PDF, video, ses repoya girmez ---
+*.pdf
+*.epub
+*.djvu
+*.mp4
+*.mkv
+*.webm
+*.mov
+*.mp3
+*.m4a
+*.wav
+
+# --- Transkriptler (yeniden indirilebilir) ---
+transkript*.txt
+*.vtt
+*.srt
+
+# --- Gizli bilgiler: API anahtarları, parolalar ---
+.env
+.env.*
+*.key
+*.pem
+secrets/
+
+# --- Derleme çıktıları ---
+*.exe
+*.o
+*.obj
+*.out
+build/
+
+# --- KiCad geçici dosyaları ---
+*-backups/
+fp-info-cache
+*.kicad_prl
+
+# --- İşletim sistemi / Office geçici dosyaları ---
+Thumbs.db
+desktop.ini
+.DS_Store
+~$*
+*.tmp

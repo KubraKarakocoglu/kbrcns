@@ -1,0 +1,12 @@
+# Satır sonlarını depoda normalize et (iki Windows PC arasında sahte farkları önler)
+* text=auto
+
+*.md   text
+*.c    text
+*.h    text
+*.ps1  text eol=crlf
+
+*.pdf  binary
+*.png  binary
+*.jpg  binary
+*.jpeg binary
