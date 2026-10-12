@@ -43,5 +43,7 @@ Durum: ⬜ Başlanmadı · 🟨 Devam ediyor · ✅ Bitti
 | Kaynak | Tür | Dil | Seviye | Durum | Not |
 |---|---|---|---|---|---|
 | [Linear Circuit Design Handbook – Analog Devices](https://www.analog.com/en/resources/technical-books/linear-circuit-design-handbook.html) | El kitabı | EN | Orta → İleri | ⬜ | Op-amp, ADC, filtre, koruma |
+| [MT-101: Decoupling Techniques – Analog Devices](https://www.analog.com/media/en/training-seminars/tutorials/MT-101.pdf) | Tutorial | EN | Başlangıç → Orta | ⬜ | "Güç ve decoupling" konusunun ana kaynağı |
+| [Murata – MLCC DC bias SSS](https://www.murata.com/en-us/support/faqs/products/capacitor/mlcc/char/0005) | Üretici SSS | EN | Başlangıç | ⬜ | Seramik kapasitörün gerilim altında kapasite kaybı |
 | STM32 "Getting started with … hardware development" uygulama notu | App note | EN | Orta | ⬜ | MCU ailesine göre seç (ör. STM32F4: AN4488) · st.com |
 | Kullandığın her IC'nin datasheet'i | Datasheet | EN | — | — | "Application Information" ve "Layout Guidelines" bölümleri şematik için en kritik kaynak |
