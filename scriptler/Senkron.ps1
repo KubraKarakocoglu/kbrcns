@@ -124,20 +124,21 @@ function Invoke-GuvenliCekme {
     Stop-Senkron -Kod 2 -Metin "Uzak değişiklikler alınamadı. Yerel commit'in güvende.`nGit çıktısı:`n$($cek.Cikti)"
 }
 
-function Get-UzakReferans {
-    # Takip edilen uzak dalın (@{u}) şu anki commit'i; yoksa boş döner.
-    $ref = Invoke-Git @('rev-parse', '-q', '--verify', '@{u}')
+function Get-HeadReferans {
+    # Çekmeden önceki yerel HEAD; henüz commit yoksa boş döner.
+    $ref = Invoke-Git @('rev-parse', '-q', '--verify', 'HEAD')
     if ($ref.Kod -eq 0) { return $ref.Cikti }
     return ''
 }
 
 function Write-YeniGelenler {
-    # Çekme öncesi ve sonrası uzak referansı karşılaştırıp diğer bilgisayardan gelenleri listeler.
-    param([string]$OncekiUzak)
+    # Çekmeden önceki yerel HEAD'de bulunmayan uzak commit'leri (diğer bilgisayardan gelenleri) listeler.
+    # Önceden yapılmış bir fetch'ten (ör. VS Code'un otomatik fetch'i) etkilenmez.
+    param([string]$OncekiHead, [string]$UzakDal)
 
-    if (-not $OncekiUzak) { Write-Tamam 'Uzak değişiklikler alındı.'; return }
+    if (-not $OncekiHead) { Write-Tamam 'Uzak değişiklikler alındı.'; return }
 
-    $liste = Invoke-Git @('-c', 'core.quotePath=false', 'log', '--format=%h  %s', ($OncekiUzak + '..@{u}'))
+    $liste = Invoke-Git @('-c', 'core.quotePath=false', 'log', '--format=%h  %s', ($OncekiHead + '..' + $UzakDal))
     if ($liste.Kod -ne 0) { Write-Tamam 'Uzak değişiklikler alındı.'; return }
     if (-not $liste.Cikti) { Write-Tamam 'Zaten güncel.'; return }
 
@@ -251,9 +252,9 @@ function Invoke-Senkron {
     # 4) Uzak değişiklikleri al
     if ($uzakDalVar) {
         Write-Adim 'Uzak değişiklikler alınıyor (pull --rebase)'
-        $oncekiUzak = Get-UzakReferans
+        $oncekiHead = Get-HeadReferans
         Invoke-GuvenliCekme -Dal $dal
-        Write-YeniGelenler -OncekiUzak $oncekiUzak
+        Write-YeniGelenler -OncekiHead $oncekiHead -UzakDal "$UzakAd/$dal"
     } else {
         Write-Tamam "Uzakta '$dal' dalı henüz yok; ilk gönderim yapılacak."
     }
