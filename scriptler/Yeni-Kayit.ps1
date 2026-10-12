@@ -1,13 +1,15 @@
 ﻿#Requires -Version 5.1
 <#
 .SYNOPSIS
-    Şablondan yeni bir C dersi, elektronik konusu veya proje klasörü oluşturur
-    ve ilerleme.md tablosuna satır ekler.
+    Şablondan yeni bir C dersi, elektronik konusu, komponent dersi, EMC dersi veya
+    proje klasörü oluşturur ve ilerleme.md tablosuna satır ekler.
 
 .DESCRIPTION
-    Ders  → C-Programlama/NN-baslik/        ozet.md, quiz.md, notlarim.md
-    Konu  → Elektronik/Konular/baslik/      ozet.md, quiz.md, kaynaklar.md
-    Proje → Elektronik/Projeler/NN-baslik/  README.md (proje kartı), sematik-review.md
+    Ders      → C-Programlama/NN-baslik/          ozet.md, quiz.md, notlarim.md
+    Konu      → Elektronik/Konular/baslik/        ozet.md, quiz.md, kaynaklar.md
+    Komponent → Elektronik/Komponentler/NN-baslik/ ozet.md, quiz.md, kaynaklar.md
+    EMC       → Elektronik/EMC/NN-baslik/          ozet.md, quiz.md, kaynaklar.md
+    Proje     → Elektronik/Projeler/NN-baslik/    README.md (proje kartı), sematik-review.md
 
     Güvenlik:
       - Var olan hiçbir dosyanın üzerine yazılmaz.
@@ -16,7 +18,7 @@
       - Dosyalar BOM'suz UTF-8 yazılır (Windows PowerShell 5.1 ve 7 aynı sonucu üretir).
 
 .PARAMETER Tur
-    Ders | Konu | Proje
+    Ders | Konu | Komponent | EMC | Proje
 
 .PARAMETER Baslik
     Kaydın başlığı (2-80 karakter). Klasör adı bundan üretilir (Türkçe karakterler sadeleştirilir).
@@ -31,6 +33,12 @@
     .\scriptler\Yeni-Kayit.ps1 -Tur Konu -Baslik "Op-amp temelleri"
 
 .EXAMPLE
+    .\scriptler\Yeni-Kayit.ps1 -Tur Komponent -Baslik "MOSFET"
+
+.EXAMPLE
+    .\scriptler\Yeni-Kayit.ps1 -Tur EMC -Baslik "ESD koruması"
+
+.EXAMPLE
     .\scriptler\Yeni-Kayit.ps1 -Tur Proje -Baslik "GPIO buton"
 
 .NOTES
@@ -39,7 +47,7 @@
 [CmdletBinding()]
 param(
     [Parameter(Mandatory)]
-    [ValidateSet('Ders', 'Konu', 'Proje')]
+    [ValidateSet('Ders', 'Konu', 'Komponent', 'EMC', 'Proje')]
     [string]$Tur,
 
     [Parameter(Mandatory)]
@@ -153,6 +161,32 @@ try {
             }
             $isaret = '<!-- KONU-EKLE -->'
             $satir  = "| [$baslikTablo]($goreli/ozet.md) | $BosDurum | - |"
+        }
+        'Komponent' {
+            $ust    = Join-Path $RepoKoku 'Elektronik/Komponentler'
+            $no     = Get-SonrakiNo $ust
+            $klasor = "$no-$slug"
+            $goreli = "Elektronik/Komponentler/$klasor"
+            $dosyalar = [ordered]@{
+                'ozet.md'      = Join-Path $SablonDizini 'komponent-dersi.md'
+                'quiz.md'      = Join-Path $SablonDizini 'quiz.md'
+                'kaynaklar.md' = Join-Path $SablonDizini 'kaynaklar.md'
+            }
+            $isaret = '<!-- KOMPONENT-EKLE -->'
+            $satir  = "| $no | [$baslikTablo]($goreli/ozet.md) | $BosDurum | - |"
+        }
+        'EMC' {
+            $ust    = Join-Path $RepoKoku 'Elektronik/EMC'
+            $no     = Get-SonrakiNo $ust
+            $klasor = "$no-$slug"
+            $goreli = "Elektronik/EMC/$klasor"
+            $dosyalar = [ordered]@{
+                'ozet.md'      = Join-Path $SablonDizini 'konu-ozeti.md'
+                'quiz.md'      = Join-Path $SablonDizini 'quiz.md'
+                'kaynaklar.md' = Join-Path $SablonDizini 'kaynaklar.md'
+            }
+            $isaret = '<!-- EMC-EKLE -->'
+            $satir  = "| $no | [$baslikTablo]($goreli/ozet.md) | $BosDurum | - |"
         }
         'Proje' {
             $ust    = Join-Path $RepoKoku 'Elektronik/Projeler'

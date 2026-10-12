@@ -8,7 +8,9 @@ C programlama ve elektronik öğrenimi için kişisel bilgi deposu. Ev ve iş bi
 kbrcns/
 ├── C-Programlama/          Ders bazlı: her ders bir klasör (NN-ders-adi)
 ├── Elektronik/
-│   ├── Konular/            Konu bazlı özetler (güç, op-amp, ADC...)
+│   ├── Komponentler/       Komponent dersleri: direnç, kapasitör, bobin... (NN-ad)
+│   ├── EMC/                EMC dersleri: temeller, kart tasarımı, testler (NN-ad)
+│   ├── Konular/            Uygulama konuları: decoupling, op-amp, ADC...
 │   ├── Sematik-Tasarim/    Kontrol listesi + hatalar ve dersler
 │   └── Projeler/           Proje kartları (NN-proje-adi)
 ├── Kaynaklar/              Kütüphane: video / kitap / PDF listesi

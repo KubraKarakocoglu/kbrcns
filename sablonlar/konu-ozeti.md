@@ -4,27 +4,56 @@
 - **İlk kaynak:** {{LINK}}
 - **Tüm kaynaklar:** [kaynaklar.md](kaynaklar.md)
 
-## Temel kavram
+> Sayısal değerler **tipik başlangıç noktalarıdır**; tasarım değeri için her zaman datasheet ve ilgili standart esastır.
 
-<!-- Konu ne, neden önemli? 3-5 cümle. -->
+---
 
-## Kritik formüller
+## ⚡ Hızlı tekrar
 
-| Formül | Ne zaman kullanılır | Dikkat |
+<!-- 5-8 madde: konunun özü. Tekrar ederken yalnızca burayı okumak yetmeli. -->
+1. 
+
+## 🧮 Formül kartı
+
+| Formül | Ne zaman kullanılır | Örnek |
 |---|---|---|
 |  |  |  |
 
-## Pratik kurallar (rule of thumb)
+---
 
-- 
+## 1. Temel kavram
 
-## Sık yapılan hatalar
+<!-- Konu ne, neden önemli? Sezgi ve benzetme. -->
 
-- 
+## 2. Detaylı anlatım
+
+<!-- Alt başlıklarla. Her iddiayı bir örnek, hesap veya çizimle destekle. -->
+
+## 3. Şematikte
+
+## 4. PCB / layout
+
+## 5. EMC açısından
+
+## 6. Ölçüm ve doğrulama
+
+## 7. Sık yapılan hatalar
+
+| Hata | Neden sorun | Doğrusu |
+|---|---|---|
+|  |  |  |
+
+## 8. Terimler sözlüğü
+
+| Terim | Anlamı |
+|---|---|
+|  |  |
+
+---
 
 ## Şematik kontrol listesine eklenecekler
 
-<!-- Bu konudan çıkan maddeler: ../../Sematik-Tasarim/kontrol-listesi.md dosyasına da işlenmeli. -->
+<!-- Bu konudan çıkan maddeler: Elektronik/Sematik-Tasarim/kontrol-listesi.md dosyasına da işlenmeli. -->
 - [ ] 
 
 ## Kontrol soruları

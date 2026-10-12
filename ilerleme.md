@@ -19,6 +19,18 @@ Ana kaynak: _seçilecek (CS50x 2026 veya Kaan Aslan – CSD)_
 | [Güç ve decoupling](Elektronik/Konular/guc-ve-decoupling/ozet.md) | ⬜ | - |
 <!-- KONU-EKLE -->
 
+## Komponentler
+
+| No | Komponent | Durum | Quiz |
+|---|---|---|---|
+<!-- KOMPONENT-EKLE -->
+
+## EMC
+
+| No | Ders | Durum | Quiz |
+|---|---|---|---|
+<!-- EMC-EKLE -->
+
 ## Projeler
 
 | No | Proje | Durum |

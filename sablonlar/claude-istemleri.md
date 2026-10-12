@@ -28,13 +28,16 @@ Aşağıda "[Kurs adı] – [Ders adı]" dersinin transkripti var.
 
 ```
 "[Konu]" için ekteki [PDF / bölüm / transkript] kaynağından
-sablonlar/konu-ozeti.md formatında Türkçe özet çıkar.
-- Hedefim: şematik tasarlarken bilmem gereken can alıcı bilgiler.
-- Formülleri "ne zaman kullanılır" ve "dikkat" sütunlarıyla ver.
+sablonlar/konu-ozeti.md formatında (komponentse sablonlar/komponent-dersi.md)
+Türkçe, DETAYLI bir ders notu çıkar.
+- En üstte hızlı tekrar ve formül kartı; altında detaylı bölümler.
+- Hedefim: şematik ve PCB tasarlarken bilmem gereken can alıcı bilgiler.
+- Her iddiayı bir örnek hesap, tablo veya çizimle destekle.
+- Şematik, PCB, EMC ve arıza modları bölümlerini mutlaka doldur.
 - "Şematik kontrol listesine eklenecekler" bölümünü mutlaka doldur.
 - Kaynakta olmayan bilgiyi [EK] ile işaretle.
-- Metni kopyalama; kendi cümlelerinle özetle.
-Ardından 6 soruluk quiz üret (en az 2 hesap sorusu).
+- Metni kopyalama; kendi cümlelerinle anlat.
+Ardından 10-12 soruluk quiz üret (en az 3 hesap sorusu).
 ```
 
 ## 3. Zayıf konuya odaklı yeni quiz

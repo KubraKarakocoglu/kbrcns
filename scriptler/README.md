@@ -29,6 +29,8 @@ Ne yapmaz: `--force` push, commit edilmemiş işi silme, 50 MB üstü dosyayı c
 ```powershell
 .\scriptler\Yeni-Kayit.ps1 -Tur Ders  -Baslik "Değişkenler ve veri tipleri" -Link "https://..."
 .\scriptler\Yeni-Kayit.ps1 -Tur Konu  -Baslik "Op-amp temelleri"
+.\scriptler\Yeni-Kayit.ps1 -Tur Komponent -Baslik "MOSFET"
+.\scriptler\Yeni-Kayit.ps1 -Tur EMC   -Baslik "ESD koruması"
 .\scriptler\Yeni-Kayit.ps1 -Tur Proje -Baslik "GPIO buton"
 ```
 
@@ -36,6 +38,8 @@ Ne yapmaz: `--force` push, commit edilmemiş işi silme, 50 MB üstü dosyayı c
 |---|---|---|
 | Ders | `C-Programlama/NN-baslik/` | ozet.md, quiz.md, notlarim.md |
 | Konu | `Elektronik/Konular/baslik/` | ozet.md, quiz.md, kaynaklar.md |
+| Komponent | `Elektronik/Komponentler/NN-baslik/` | ozet.md, quiz.md, kaynaklar.md |
+| EMC | `Elektronik/EMC/NN-baslik/` | ozet.md, quiz.md, kaynaklar.md |
 | Proje | `Elektronik/Projeler/NN-baslik/` | README.md, sematik-review.md |
 
 ## Sık karşılaşılan sorunlar

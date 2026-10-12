@@ -1,6 +1,8 @@
 # Elektronik Konuları
 
-Konu bazlı özetler. Her konu bir klasör:
+Birden fazla komponenti birleştiren **uygulama konuları** (ör. decoupling, sinyal koşullandırma). Tek bir komponentin temelleri için [Komponentler](../Komponentler/README.md), EMC için [EMC](../EMC/README.md) klasörüne bak.
+
+Her konu bir klasör:
 
 | Dosya | İçerik |
 |---|---|
