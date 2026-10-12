@@ -1,4 +1,4 @@
-# Şematik Kontrol Listesi · v1
+# Şematik Kontrol Listesi · v1.1
 
 > **Kullanım:** Bu ana liste. Her projede `Yeni-Kayit.ps1 -Tur Proje` bunu `sematik-review.md` olarak proje klasörüne kopyalar; işaretlemeyi orada yap.
 > Bir konu veya hatadan yeni madde çıktığında **buraya** ekle ve sürüm numarasını artır.
@@ -38,6 +38,10 @@
 - [ ] Datasheet'in istediği ek kapasitörler eklendi (ör. MCU VCAP pinleri, VDDA için ek filtre)
 - [ ] Her güç rayında bulk kapasitör var
 - [ ] Referans gerilim pinleri (VREF+) için datasheet'in filtre önerisi uygulandı
+- [ ] Decoupling dielektriği X7R/X5R (küçük değerlerde C0G); Y5V/Z5U yok
+- [ ] Layout notu: pin → kapasitör → GND via döngüsü minimum; via pad'e bitişik, uzun ince iz yok
+- [ ] Analog besleme ferrit boncuğu: DC akım derecesi yeterli (doyma yok), LC rezonansı değerlendirildi
+- [ ] Tantal kullanıldıysa gerilim derating üretici önerisine uygun
 
 ## 5. Mikrodenetleyici
 
@@ -83,3 +87,10 @@
 
 - [ ] Şematik bu listeyle ikinci bir göz tarafından (kişi veya Claude) review edildi
 - [ ] Bu tasarımdan çıkan dersler [hatalar-dersler.md](/Elektronik/Sematik-Tasarim/hatalar-dersler.md) dosyasına işlendi
+
+## Sürüm geçmişi
+
+| Sürüm | Tarih | Değişiklik |
+|---|---|---|
+| v1.1 | 2026-10-12 | "Güç ve decoupling" konusundan 4 madde eklendi (bölüm 4) |
+| v1 | 2026-10-09 | İlk sürüm |
