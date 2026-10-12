@@ -37,6 +37,9 @@ Durum: ⬜ Başlanmadı · 🟨 Devam ediyor · ✅ Bitti
 | *The Art of Electronics* – Horowitz, Hill | Kitap | EN | Orta → İleri | ⬜ | Referans: baştan sona değil, konu bazlı oku |
 | [*Op Amps for Everyone* – Bruce Carter](https://shop.elsevier.com/books/op-amps-for-everyone/carter/978-0-7506-7701-1) | Kitap | EN | Orta | ⬜ | Op-amp konusu için |
 | *High-Speed Digital Design* – Johnson, Graham | Kitap | EN | İleri | ⬜ | Sinyal bütünlüğü; PCB aşamasında |
+| *Electromagnetic Compatibility Engineering* – Henry W. Ott | Kitap | EN | Orta → İleri | ⬜ | EMC'nin temel kitabı; EMC dersleri |
+| *EMC for Product Designers* – Tim Williams | Kitap | EN | Orta | ⬜ | Ürün tasarımcısı bakışıyla EMC ve uyumluluk süreci |
+| *Trilogy of Magnetics* – Würth Elektronik | Kitap | EN | Orta | ⬜ | Bobin, ferrit ve EMC filtreleri |
 
 ## Elektronik – Ücretsiz üretici dokümanları
 
@@ -46,4 +49,8 @@ Durum: ⬜ Başlanmadı · 🟨 Devam ediyor · ✅ Bitti
 | [MT-101: Decoupling Techniques – Analog Devices](https://www.analog.com/media/en/training-seminars/tutorials/MT-101.pdf) | Tutorial | EN | Başlangıç → Orta | ⬜ | "Güç ve decoupling" konusunun ana kaynağı |
 | [Murata – MLCC DC bias SSS](https://www.murata.com/en-us/support/faqs/products/capacitor/mlcc/char/0005) | Üretici SSS | EN | Başlangıç | ⬜ | Seramik kapasitörün gerilim altında kapasite kaybı |
 | STM32 "Getting started with … hardware development" uygulama notu | App note | EN | Orta | ⬜ | MCU ailesine göre seç (ör. STM32F4: AN4488) · st.com |
+| [ST AN2867 – Oscillator design guide for STM32](https://www.st.com/resource/en/application_note/an2867-oscillator-design-guide-for-stm32-microcontrollers-stmicroelectronics.pdf) | App note | EN | Orta | ⬜ | Kristal tasarımı · Mikrodenetleyici dersi |
+| [Analog Devices AN-1368 – Ferrite Bead Demystified](https://www.analog.com/en/resources/app-notes/an-1368.html) | App note | EN | Orta | ⬜ | Ferrit boncuk dersi |
+| [TI SLVA477 – Basic Calculation of a Buck Converter's Power Stage](https://ti.com/lit/pdf/SLVA477) | App note | EN | Orta | ⬜ | Bobin dersi |
+| [NXP UM10204 – I²C-bus specification](https://www.nxp.com/docs/en/user-guide/UM10204.pdf) | Spesifikasyon | EN | Orta | ⬜ | Pull-up hesabı · Direnç dersi |
 | Kullandığın her IC'nin datasheet'i | Datasheet | EN | — | — | "Application Information" ve "Layout Guidelines" bölümleri şematik için en kritik kaynak |
