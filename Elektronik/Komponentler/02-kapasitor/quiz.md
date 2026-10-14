@@ -1,6 +1,6 @@
 # Quiz · Kapasitör
 
-> Önce kendin çöz, sonra en alttaki cevap anahtarını aç. Hesap sorularında işlemi kâğıda yaz. 12 soru, 5'i hesap.
+> Önce kendin çöz, sonra en alttaki cevap anahtarını aç. Hesap sorularında işlemi kâğıda yaz. 14 soru, 6'sı hesap.
 
 ## Sorular
 
@@ -76,6 +76,18 @@
     - C) Piezoelektrik etki ile titreşimi gürültüye çevirdiği için (mikrofonik etki)
     - D) Polarize olduğu için
 
+13. **(Hesap)** ADC 200 Hz ile örnekliyor ve girişinde filtre yok. Girişe 150 Hz'lik gürültü geliyor. Kayıtlı veride bu gürültü hangi frekansta görünür?
+    - A) 150 Hz
+    - B) 100 Hz
+    - C) 350 Hz
+    - D) 50 Hz
+
+14. Anti-aliasing filtresi neden ADC'den **önce**, analog olarak konur?
+    - A) Örneklemeden sonra sahte (alias) frekans gerçek bir sinyalle aynı sayıları üretir; yazılım ikisini ayıramaz
+    - B) Dijital filtreler her zaman analog filtrelerden kötüdür
+    - C) ADC yalnızca filtrelenmiş sinyali okuyabilir
+    - D) Yazılım filtresi çok fazla RAM kullanır
+
 ## Sonuç
 
 | Tarih | Skor | Zayıf kalan konu |
@@ -108,5 +120,9 @@
 11. **D** — Boşaltılan kapasitörde gerilim kısmen geri gelir; örnekle-tut devresinde önceki örneğin izi kalır. C0G ve polipropilen film bu açıdan en iyisidir.
 
 12. **C** — Class 2 seramikler piezoelektriktir: mekanik titreşimi gerilime çevirir. Hassas analog yolda C0G veya film tercih edilir.
+
+13. **D** — f_s/2 = 100 Hz; 150 > 100 olduğu için aliasing var. 150'ye en yakın 200'ün katı 200'dür: `|150 − 200| = 50 Hz`. Gürültü şebeke frekansı gibi görünür ve yanlış teşhise yol açar. Ayrıntı: [ozet.md bölüm 10.3](ozet.md#103-hesap-tarifi-2-adım).
+
+14. **A** — Örneklemeden sonra elde yalnızca sayılar kalır; sahte frekansı gerçek sinyalden ayıracak bilgi yoktur. Yüksek frekanslı gürültü örneklemeden önce, RC gibi analog bir filtreyle bastırılmalıdır.
 
 </details>

@@ -32,6 +32,7 @@
 | `L = L0 · 2^((T0 − T)/10)` | Elektrolitik ömrü | 2000 h @105 °C → 65 °C'de 32 000 h (~3,7 yıl) |
 | `I = 2π·f·C·V` | Y kapasitörün kaçak akımı | 4,7 nF, 230 V, 50 Hz → 0,34 mA |
 | `C1 = C2 = 2·(C_L − C_stray)` | Kristal yük kapasitörleri | C_L 12 pF, stray 3 pF → 18 pF |
+| `f_görünen = \|f − f_s'nin en yakın katı\|` | Aliasing: f > f_s/2 ise sinyal hangi frekansta görünür | 60 Hz, f_s 100 Hz → **40 Hz** |
 
 ---
 
@@ -130,6 +131,7 @@ Ayrı derste ayrıntılı: [Güç ve decoupling](../../Konular/guc-ve-decoupling
 - `f_c = 1/(2πRC)`. 1 kΩ, 100 nF → 1,59 kHz.
 - ADC girişinde **anti-aliasing** filtresi olarak kullanılır: kesim frekansı örnekleme frekansının yarısının altında olmalı.
 - Kararlı bir kesim frekansı istiyorsan C0G veya X7R kullan (Y5V asla).
+- → Adım adım, basit anlatım ve gaz sensörü örneği: [bölüm 10](#10-derinleştirme-rc-filtre-ve-aliasing)
 
 ### 5.4 Zamanlama ve gecikme
 
@@ -239,6 +241,113 @@ Ayrı derste ayrıntılı: [Güç ve decoupling](../../Konular/guc-ve-decoupling
 | **Inrush** | İlk enerjilemedeki ani şarj akımı |
 | **Mikrofonik etki** | Titreşimin elektriksel gürültüye dönüşmesi |
 | **Esnek terminasyon** | Eğilmeye dayanıklı MLCC uç yapısı |
+| **Örnekleme frekansı (f_s)** | ADC'nin saniyede aldığı ölçüm sayısı |
+| **Nyquist frekansı** | f_s/2; bunun üstündeki frekanslar sahte frekansa dönüşür |
+| **Aliasing** | Hızlı bir sinyalin örneklemede yavaş, sahte bir sinyal gibi görünmesi |
+| **Anti-aliasing filtresi** | ADC'den önce f_s/2 üstünü bastıran analog filtre (çoğunlukla RC) |
+
+## 10. Derinleştirme: RC filtre ve aliasing
+
+> Bu bölüm [5.3](#53-rc-alçak-geçiren-filtre)'ü adım adım açar. Önce tekerlek örneğini oku, sonra hesap tarifini uygula.
+
+### 10.1 RC filtre ne yapar?
+
+**Benzetme:** R dar bir boru, C bir kova. Giriş gerilimi kovayı doldurmaya çalışan sudur.
+- **Yavaş değişim:** Kova dolup boşalmaya yetişir; çıkış girişi takip eder.
+- **Hızlı değişim:** Kova dar borudan dolup boşalmaya yetişemez; çıkış neredeyse düz kalır.
+
+**Gerilim bölücü bakışı:** R ve C seri bir gerilim bölücüdür. Kapasitörün "direnci" `X_C = 1/(2πfC)` frekans arttıkça düşer.
+- Düşük frekansta C açık devre gibidir → çıkış ≈ giriş.
+- Yüksek frekansta C kısa devre gibidir → çıkış ≈ 0.
+- **f_c**, `X_C = R` olduğu frekanstır. Burada çıkış girişin **%70,7**'sidir (−3 dB).
+
+| Frekans | Çıkışa geçen |
+|---|---|
+| f_c / 10 | %99,5 |
+| f_c | %70,7 |
+| 10 × f_c | %10 |
+| 100 × f_c | %1 |
+
+**Kural:** f_c'nin üstünde frekans 10 katına çıkınca çıkış 10'da 1'e düşer (−20 dB/dekad).
+
+**Bedeli:** `τ = RC`. Filtre güçlendikçe (f_c düştükçe) sinyal yavaşlar. Ani bir değişimin %99'una oturmak ~5τ sürer.
+
+### 10.2 Aliasing nedir? Tekerlek örneği
+
+ADC bir fotoğraf makinesidir. **f_s**, saniyede çektiği fotoğraf sayısıdır.
+
+1. Tekerlek saniyede **50 tur** dönüyor. Sen saniyede **40 fotoğraf** çekiyorsun.
+2. İki fotoğraf arasında tekerlek `50 / 40 = 1,25 tur` döner.
+3. Tam turu fotoğrafta göremezsin; tekerlek aynı yerde duruyor gibi görünür. Yalnızca artan **0,25 turu** görürsün.
+4. Saniyede 40 fotoğraf × 0,25 tur = **10 tur/s**.
+
+Fotoğrafları art arda izleyen biri tekerleğin saniyede 10 tur döndüğünü sanır. Yani **50 Hz sinyal, 40 Hz örneklemede 10 Hz gibi görünür.** Bu sahte frekansa **alias** denir. Filmlerde araba tekerleklerinin yavaş ya da geri dönüyor görünmesi aynı olaydır.
+
+**Sınır (Nyquist):** Bir periyotta en az 2 fotoğraf gerekir. Bu yüzden ancak **f_s/2'nin altındaki** frekanslar doğru görünür.
+
+### 10.3 Hesap tarifi (2 adım)
+
+1. **Kontrol et:** `f < f_s/2` mi? Evet → sorun yok, sinyal kendi frekansında görünür.
+2. **Değilse:** f'ye **en yakın f_s katını** bul (f_s, 2·f_s, 3·f_s…). Görünen frekans = `|f − o kat|`.
+
+**Çözümlü örnek:** f_s = 100 Hz, girişte 60 Hz gürültü var.
+- f_s/2 = 50 Hz. 60 > 50 → aliasing var.
+- 60'a en yakın 100'ün katı: **100**.
+- `|60 − 100| = 40 Hz`. Gürültü kayıtlı veride **40 Hz** gibi görünür.
+
+| f_s | Gerçek f | f_s/2 | En yakın kat | Görünen |
+|---|---|---|---|---|
+| 40 Hz | 50 Hz | 20 Hz | 40 | **10 Hz** |
+| 100 Hz | 60 Hz | 50 Hz | 100 | **40 Hz** |
+| 100 Hz | 210 Hz | 50 Hz | 200 | **10 Hz** |
+| 1 kHz | 950 Hz | 500 Hz | 1000 | **50 Hz** (şebeke gürültüsü sanırsın!) |
+| 100 Hz | 30 Hz | 50 Hz | — | **30 Hz** (alias yok) |
+
+### 10.4 Neden yazılımla düzeltilemez?
+
+Örneklemeden sonra elde sadece sayılar kalır. Sahte 10 Hz ile gerçek bir 10 Hz sinyal **aynı sayıları** üretir; yazılım hangisinin sahte olduğunu bilemez. Bu yüzden yüksek frekanslı gürültü **ADC'den önce**, analog olarak bastırılmalıdır. Bu işi yapan RC filtreye **anti-aliasing filtresi** denir.
+
+### 10.5 f_c neden f_s/2'nin çok altında seçilir?
+
+Tek RC yumuşak keser (10.1 tablosu).
+- **Kötü seçim:** f_s = 1 kHz, f_c = 500 Hz. 900 Hz'lik gürültünün **%49'u** geçer ve 100 Hz'e alias olur.
+- **Pratik kural:** `ölçmek istediğin sinyal < f_c ≪ f_s/2`. f_c'yi f_s/2'nin en az 10'da biri seç; daha sert kesim gerekiyorsa f_s'yi artır veya 2. kademe filtre ekle.
+
+### 10.6 Tasarım örneği: gaz sensörü girişi
+
+LEL dedektöründe sensör sinyali saniyeler mertebesinde değişir; asıl düşman 50 Hz şebeke kuplajı ve anahtarlamalı regülatör gürültüsüdür.
+
+- **Seçim:** f_s = 1 kHz (f_s/2 = 500 Hz), R = 10 kΩ, C = 1,5 µF
+- `f_c = 1/(2π × 10 kΩ × 1,5 µF) ≈ 10,6 Hz`
+- `τ = 15 ms`, `5τ = 75 ms`; sensörün kendi tepki süresi yanında ihmal edilebilir.
+
+| Frekans | Ne? | Çıkışa geçen |
+|---|---|---|
+| 1 Hz | Gaz sinyali | %99,6 |
+| 10 Hz | Hızlı değişim | %73 |
+| 50 Hz | Şebeke gürültüsü | %21 |
+| 500 Hz | f_s/2, alias sınırı | %2 |
+
+- **50 Hz alias değildir** (500 Hz'in altında), ama yine de gürültüdür. RC onu %21'e indirir. Yazılımda **20 ms (20 örnek) ortalama** almak 50 Hz'i ve tüm katlarını sıfırlar, çünkü bir tam periyodun ortalaması sıfırdır.
+- **Yük deposu:** 1,5 µF, ADC'nin ~5 pF örnekleme kapasitörünün yanında çok büyüktür. 10 kΩ kaynak empedansına rağmen ADC doğru okur. Bkz. [MCU dersi – ADC örnekleme](../05-mikrodenetleyici-donanimi/ozet.md).
+- **Kapasitör türü:** 1,5 µF C0G büyük ve pahalıdır. 3,3 V'ta, ≥ 16 V dereceli X7R yeterlidir; f_c'nin ±%20 kayması bu uygulamada sorun değildir. Y5V kullanma.
+
+### 10.7 Kendin dene
+
+1. f_s = 100 Hz, girişte 90 Hz gürültü. Kayıtta hangi frekansta görünür?
+2. f_s = 100 Hz, girişte 30 Hz sinyal. Hangi frekansta görünür?
+3. f_s = 200 Hz, girişte 190 Hz gürültü. Hangi frekansta görünür?
+4. 10 kΩ direnç ile f_c ≈ 16 Hz istiyorsun. Kapasitör kaç olmalı?
+
+<details>
+<summary>Cevaplar</summary>
+
+1. 90 > 50 → en yakın kat 100 → `|90 − 100| =` **10 Hz**
+2. 30 < 50 → alias yok → **30 Hz**
+3. 190 > 100 → en yakın kat 200 → `|190 − 200| =` **10 Hz**
+4. `C = 1/(2π × 10 kΩ × 16 Hz) ≈` **1 µF**
+
+</details>
 
 ---
 
@@ -254,4 +363,4 @@ Aşağıdaki maddeler [kontrol-listesi.md](../../Sematik-Tasarim/kontrol-listesi
 
 ## Kontrol soruları
 
-→ [quiz.md](quiz.md) · 12 soru, 5'i hesap
+→ [quiz.md](quiz.md) · 14 soru, 6'sı hesap
