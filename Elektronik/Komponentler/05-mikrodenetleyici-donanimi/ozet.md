@@ -135,7 +135,7 @@ Her bloğu aşağıda tek tek inceleyeceğiz. Decoupling ayrı derste: [Güç ve
 - Bedeli: Kaynak direnci ile bu kapasitör bir alçak geçiren filtre oluşturur; hızlı değişen sinyalleri yavaşlatır. Kapasitörün örneklemeler arasında yeniden dolması gerekir.
 
 **Diğer kurallar:**
-- **Anti-aliasing:** Girişteki RC filtrenin kesimi, örnekleme frekansının yarısının altında olmalı.
+- **Anti-aliasing:** Girişteki RC filtrenin kesimi, örnekleme frekansının yarısının altında olmalı. Ayrıntı: [Aliasing ve anti-aliasing filtresi](../../Konular/aliasing-ve-anti-aliasing-filtresi/ozet.md).
 - **Referans kalitesi:** VREF+ üzerindeki gürültü doğrudan sonuca eklenir.
 - **Oransal (ratiometric) ölçüm:** Köprü sensörünü ADC referansıyla aynı kaynaktan beslersen, referans gerilimindeki değişim sonuçtan sadeleşir.
 - **Aşırı örnekleme:** Sinyalde yeterli gürültü varsa her 4 kat örnekleme 1 bit çözünürlük kazandırır.

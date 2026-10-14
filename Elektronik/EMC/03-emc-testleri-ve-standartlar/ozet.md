@@ -82,7 +82,7 @@ Her satırda test, seviye ve performans kriteri yazar.
 | Test | Tipik zayıf nokta | Tasarım önlemi |
 |---|---|---|
 | **ESD (-2)** | Korumasız konnektörler, reset hattı, plastik kasa aralıkları | TVS konnektörde, kısa GND bağlantısı, NRST kapasitörü, watchdog |
-| **Işınımlı RF (-3)** | Analog ön kat: **op-amp girişleri RF'yi doğrultup DC kaymaya çevirir**; sensör okuması kayar | Op-amp girişlerinde RC filtre, kısa analog izler, ekranlama, yazılımla ortalama |
+| **Işınımlı RF (-3)** | Analog ön kat: **op-amp girişleri RF'yi doğrultup DC kaymaya çevirir**; sensör okuması kayar | Op-amp girişlerinde RC filtre, kısa analog izler, ekranlama, yazılımla ortalama. 1 kHz AM'nin DC'ye katlanmaması için f_s seçimi: [Aliasing dersi, bölüm 12](../../Konular/aliasing-ve-anti-aliasing-filtresi/ozet.md#12-emc-açısından) |
 | **EFT (-4)** | Güç girişi ve uzun kablolar; MCU kilitlenmesi | Giriş filtresi, CMC, TVS, iyi toprak, watchdog |
 | **Surge (-5)** | Güç girişi ve dış ortama giden uzun hatlar; yüksek enerji | TVS / varistör / gaz deşarj tüpü, sigorta, yalıtım mesafeleri |
 | **İletimli RF (-6)** | Kablolara bağlı analog ve haberleşme devreleri | Kablo girişinde filtre, CMC |

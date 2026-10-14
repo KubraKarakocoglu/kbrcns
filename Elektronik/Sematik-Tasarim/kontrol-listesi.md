@@ -1,4 +1,4 @@
-# Şematik Kontrol Listesi · v1.2
+# Şematik Kontrol Listesi · v1.3
 
 > **Kullanım:** Bu ana liste. Her projede `Yeni-Kayit.ps1 -Tur Proje` bunu `sematik-review.md` olarak proje klasörüne kopyalar; işaretlemeyi orada yap.
 > Bir konu veya hatadan yeni madde çıktığında **buraya** ekle ve sürüm numarasını artır.
@@ -64,6 +64,11 @@
 - [ ] Op-amp giriş ortak mod aralığı ve çıkış salınımı besleme ile uyumlu (rail-to-rail gerekli mi?)
 - [ ] Op-amp kapasitif yük sürüyorsa çıkışa izolasyon direnci eklendi
 - [ ] ADC girişinde anti-aliasing RC filtre var; kaynak empedansı ADC örnekleme süresine uygun
+- [ ] Sinyal bandı (B), f_s ve filtre f_c'si şematikte not edildi; k·f_s ± B bölgelerindeki bozucular hata bütçesinin (ör. ½ LSB) altına iniyor
+- [ ] Anti-aliasing RC'si ADC pinine bitişik; 2. kademe filtre için yer (DNP) bırakıldı
+- [ ] Filtresiz, düşük f_s yok; şebeke için tam periyotluk ortalama planlandı (50 Hz → 20 ms; 60 Hz pazarı da varsa 100 ms)
+- [ ] 1 kHz, f_s'nin tam katı değil (RF bağışıklık testindeki 1 kHz AM DC'ye katlanmaz; ör. f_s = 1,2 kHz)
+- [ ] Firmware notu: ADC timer ile tetikleniyor; seyreltme ve loglama öncesinde ortalama var
 - [ ] ADC referansının kararlılığı ve gürültüsü ölçüm hassasiyetine yetiyor; mümkünse oransal (ratiometric) ölçüm tercih edildi
 - [ ] Dış dünyaya açılan sensör girişlerinde seri direnç + kenetleme (clamp) koruması var
 - [ ] Gerilim bölücüde empedans ↔ akım tüketimi ↔ ADC yüklemesi dengelendi
@@ -132,6 +137,7 @@
 
 | Sürüm | Tarih | Değişiklik |
 |---|---|---|
+| v1.3 | 2026-10-14 | "Aliasing ve anti-aliasing filtresi" konusundan 5 madde (bölüm 6) |
 | v1.2 | 2026-10-12 | Komponent ve EMC derslerinden maddeler: bölüm 5'e 6 madde, yeni bölüm 10 (Pasif komponentler) ve 11 (EMC) |
 | v1.1 | 2026-10-12 | "Güç ve decoupling" konusundan 4 madde eklendi (bölüm 4) |
 | v1 | 2026-10-09 | İlk sürüm |

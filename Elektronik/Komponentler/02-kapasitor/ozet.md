@@ -251,6 +251,8 @@ Ayrı derste ayrıntılı: [Güç ve decoupling](../../Konular/guc-ve-decoupling
 ## 10. Derinleştirme: RC filtre ve aliasing
 
 > Bu bölüm [5.3](#53-rc-alçak-geçiren-filtre) ve [5.5](#55-ac-kuplaj-yüksek-geçiren)'i adım adım açar. Okuma sırası: temel fikir (10.1–10.2) → iki filtre ayrı ayrı (10.3–10.4) → ADC ve aliasing (10.5–10.8) → gerçek tasarım örneği (10.9) → alıştırmalar (10.10).
+>
+> Aliasing'in tamamı (katlanma, DC'ye katlanma, firmware, EMC testi) ayrı derste: [Aliasing ve anti-aliasing filtresi](../../Konular/aliasing-ve-anti-aliasing-filtresi/ozet.md).
 
 ### 10.1 Temel fikir: yavaş kısım, hızlı kısım
 
@@ -432,6 +434,7 @@ LEL dedektöründe sensör sinyali saniyeler mertebesinde değişir; asıl düş
 - **50 Hz alias değildir** (500 Hz'in altında), ama yine de gürültüdür. RC onu %21'e indirir. Yazılımda **20 ms (20 örnek) ortalama** almak 50 Hz'i ve tüm katlarını sıfırlar, çünkü bir tam periyodun ortalaması sıfırdır.
 - **Yük deposu:** 1,5 µF, ADC'nin ~5 pF örnekleme kapasitörünün yanında çok büyüktür. 10 kΩ kaynak empedansına rağmen ADC doğru okur. Bkz. [MCU dersi – ADC örnekleme](../05-mikrodenetleyici-donanimi/ozet.md).
 - **Kapasitör türü:** 1,5 µF C0G büyük ve pahalıdır. 3,3 V'ta, ≥ 16 V dereceli X7R yeterlidir; f_c'nin ±%20 kayması bu uygulamada sorun değildir. Y5V kullanma.
+- **EMC notu:** RF bağışıklık testindeki 1 kHz AM modülasyonu, f_s = 1 kHz'de DC'ye katlanır ve ortalama onu silemez. Bu yüzden **f_s = 1,2 kHz + 24 örnek ortalama** (yine 20 ms) daha güvenlidir. Bkz. [Aliasing dersi, bölüm 8](../../Konular/aliasing-ve-anti-aliasing-filtresi/ozet.md#8-tasarım-örneği-lel-dedektörü-girişi).
 
 ### 10.10 Kendin dene
 
