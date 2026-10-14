@@ -1,6 +1,6 @@
 # Quiz · Kapasitör
 
-> Önce kendin çöz, sonra en alttaki cevap anahtarını aç. Hesap sorularında işlemi kâğıda yaz. 14 soru, 6'sı hesap.
+> Önce kendin çöz, sonra en alttaki cevap anahtarını aç. Hesap sorularında işlemi kâğıda yaz. 16 soru, 6'sı hesap.
 
 ## Sorular
 
@@ -88,6 +88,18 @@
     - C) ADC yalnızca filtrelenmiş sinyali okuyabilir
     - D) Yazılım filtresi çok fazla RAM kullanır
 
+15. Gaz sensörünün çıkışını MCU'nun ADC girişine bağlıyorsun. Hangi filtre, kapasitör nereye?
+    - A) Yüksek geçiren; kapasitör sensör çıkışına seri
+    - B) Filtreye gerek yok; yazılım ortalaması yeter
+    - C) Alçak geçiren; kapasitör ADC pininin dibinde, pinden toprağa
+    - D) Yüksek geçiren; kapasitör ADC pininden toprağa
+
+16. Gaz sensörü sinyalinin yoluna seri bir AC kuplaj kapasitörü konursa ne olur?
+    - A) 50 Hz gürültü tamamen yok olur, ölçüm iyileşir
+    - B) Gaz seviyesi DC bilgi olduğu için silinir; cihaz kalıcı gazı göremez
+    - C) Ölçüm hızlanır
+    - D) Hiçbir şey değişmez
+
 ## Sonuç
 
 | Tarih | Skor | Zayıf kalan konu |
@@ -121,8 +133,12 @@
 
 12. **C** — Class 2 seramikler piezoelektriktir: mekanik titreşimi gerilime çevirir. Hassas analog yolda C0G veya film tercih edilir.
 
-13. **D** — f_s/2 = 100 Hz; 150 > 100 olduğu için aliasing var. 150'ye en yakın 200'ün katı 200'dür: `|150 − 200| = 50 Hz`. Gürültü şebeke frekansı gibi görünür ve yanlış teşhise yol açar. Ayrıntı: [ozet.md bölüm 10.3](ozet.md#103-hesap-tarifi-2-adım).
+13. **D** — f_s/2 = 100 Hz; 150 > 100 olduğu için aliasing var. 150'ye en yakın 200'ün katı 200'dür: `|150 − 200| = 50 Hz`. Gürültü şebeke frekansı gibi görünür ve yanlış teşhise yol açar. Ayrıntı: [ozet.md bölüm 10.3](ozet.md#106-hesap-tarifi-2-adım).
 
 14. **A** — Örneklemeden sonra elde yalnızca sayılar kalır; sahte frekansı gerçek sinyalden ayıracak bilgi yoktur. Yüksek frekanslı gürültü örneklemeden önce, RC gibi analog bir filtreyle bastırılmalıdır.
+
+15. **C** — Bilgi (gaz seviyesi) yavaş, gürültü (50 Hz, regülatör) hızlı; yavaşı tutan filtre alçak geçirendir. Kapasitör toprağa bağlanır ve ADC pininin dibine konur; böylece filtreden sonra iz üzerinden yeni gürültü binmez. "Yüksek geçiren + toprağa kapasitör" diye bir yapı yoktur: C toprağa bağlıysa filtre zaten alçak geçirendir.
+
+16. **B** — Seri kapasitör sabit (DC) kısmı durdurur. Gaz arttığında sensör çıkışı yükselip orada kalır; bu tam da DC bilgidir. Kapasitör bir süre sonra bu seviyeyi "unutur" ve çıkış sıfıra döner. Bir güvenlik cihazında bu, gazın görülmemesi demektir.
 
 </details>

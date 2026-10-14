@@ -19,6 +19,7 @@
 6. Şebekeye bağlı devrelerde yalnızca sertifikalı **X/Y güvenlik kapasitörleri** kullanılır.
 7. MLCC, kart eğilince **çatlar** ve kısa devreye dönüşebilir; yerleşimde gerilme bölgelerinden uzak dur.
 8. Büyük kapasitörler ilk enerjilemede **çok büyük inrush akımı** çeker.
+9. **C toprağa → alçak geçiren** (yavaşı tutar); **C yolda, seri → yüksek geçiren** (hızlıyı tutar). Gaz dedektöründe neredeyse hep alçak geçiren gerekir.
 
 ## 🧮 Formül kartı
 
@@ -131,7 +132,7 @@ Ayrı derste ayrıntılı: [Güç ve decoupling](../../Konular/guc-ve-decoupling
 - `f_c = 1/(2πRC)`. 1 kΩ, 100 nF → 1,59 kHz.
 - ADC girişinde **anti-aliasing** filtresi olarak kullanılır: kesim frekansı örnekleme frekansının yarısının altında olmalı.
 - Kararlı bir kesim frekansı istiyorsan C0G veya X7R kullan (Y5V asla).
-- → Adım adım, basit anlatım ve gaz sensörü örneği: [bölüm 10](#10-derinleştirme-rc-filtre-ve-aliasing)
+- → Alçak mı yüksek mi, ne zaman hangisi, aliasing ve gaz sensörü örneği: [bölüm 10](#10-derinleştirme-rc-filtre-ve-aliasing)
 
 ### 5.4 Zamanlama ve gecikme
 
@@ -144,6 +145,7 @@ Ayrı derste ayrıntılı: [Güç ve decoupling](../../Konular/guc-ve-decoupling
 - DC seviyesini engelleyip sinyali geçirmek için kullanılır.
 - Yük 10 kΩ, istenen kesim 10 Hz → `C = 1/(2π × 10 kΩ × 10 Hz) ≈ 1,6 µF`.
 - Hassas analog sinyalde Class 2'nin mikrofonik gürültüsüne ve DC bias'a dikkat et; film tercih edilir.
+- → Adım adım anlatım ve "ne zaman yüksek geçiren?" sorusu: [bölüm 10.4](#104-yüksek-geçiren-ac-kuplaj)
 
 ### 5.6 Kristal yük kapasitörleri
 
@@ -248,9 +250,55 @@ Ayrı derste ayrıntılı: [Güç ve decoupling](../../Konular/guc-ve-decoupling
 
 ## 10. Derinleştirme: RC filtre ve aliasing
 
-> Bu bölüm [5.3](#53-rc-alçak-geçiren-filtre)'ü adım adım açar. Önce tekerlek örneğini oku, sonra hesap tarifini uygula.
+> Bu bölüm [5.3](#53-rc-alçak-geçiren-filtre) ve [5.5](#55-ac-kuplaj-yüksek-geçiren)'i adım adım açar. Okuma sırası: temel fikir (10.1–10.2) → iki filtre ayrı ayrı (10.3–10.4) → ADC ve aliasing (10.5–10.8) → gerçek tasarım örneği (10.9) → alıştırmalar (10.10).
 
-### 10.1 RC filtre ne yapar?
+### 10.1 Temel fikir: yavaş kısım, hızlı kısım
+
+Her sinyal iki parçadan oluşur: **yavaş** değişen kısım ve **hızlı** değişen kısım. Filtre bir elek gibidir:
+- **Alçak geçiren** yavaş kısmı tutar, hızlı kısmı atar.
+- **Yüksek geçiren** hızlı kısmı tutar, yavaş kısmı atar.
+
+**Kapasitörün tek kuralı:** Yavaş değişime karşı **duvar**, hızlı değişime karşı **tel** gibidir. Filtrenin türünü kapasitörün **nerede durduğu** belirler:
+
+```
+Alçak geçiren                          Yüksek geçiren (AC kuplaj)
+
+giriş ──[R]──┬── çıkış                 giriş ──[C]──┬── çıkış
+             │                                      │
+            [C]  ← C toprağa                       [R]  ← R toprağa (çoğu zaman
+             │                                      │       sonraki katın girişi)
+            GND                                    GND
+```
+
+- **C toprağa bağlıysa:** Hızlı kısım "tel" üzerinden toprağa kaçar, yavaş kısım kalır → **alçak geçiren**.
+- **C yolun üstündeyse:** Yavaş kısım "duvara" çarpar, sadece hızlı kısım geçer → **yüksek geçiren**.
+
+**Örnek:** Giriş = 1,5 V sabit seviye + yavaş dalga (bilgi, ör. gaz seviyesi) + hızlı tırtıklar (gürültü, ör. 50 Hz).
+
+| | Sabit seviye | Yavaş dalga | Hızlı tırtıklar |
+|---|---|---|---|
+| Alçak geçiren çıkışı | Kalır | Kalır | **Gider** |
+| Yüksek geçiren çıkışı | **Gider** | **Gider** | Kalır |
+
+### 10.2 Hangisini ne zaman koyarım? (3 soru)
+
+1. **Bilgi** yavaş mı değişiyor, hızlı mı?
+2. **Gürültü** yavaş mı, hızlı mı?
+3. Bilgiyi tutan filtreyi seç. f_c'yi bilgi ile gürültünün **arasına** koy.
+
+| Sinyal | Bilgi | Gürültü | Filtre |
+|---|---|---|---|
+| Gaz sensörü → ADC | Yavaş (saniyeler) | Hızlı (50 Hz, regülatör) | **Alçak geçiren** |
+| NTC sıcaklık | Yavaş | Hızlı | **Alçak geçiren** |
+| Buton | Yavaş (basma) | Hızlı (kontak sıçraması) | **Alçak geçiren** |
+| Besleme hattı | Sabit DC | Hızlı | **Alçak geçiren** (decoupling kapasitörü aslında budur) |
+| Mikrofon | Hızlı (ses) | Yavaş (DC seviye) | **Yüksek geçiren** |
+
+- **Gaz dedektöründe neredeyse her yerde alçak geçiren** kullanılır, çünkü ölçülen her şey (gaz, sıcaklık, besleme) yavaş değişir. Yüksek geçiren nadiren gerekir.
+- **f_c'nin yeri:** Gaz bilgisi 1 Hz'in altında, gürültü 50 Hz ve üstünde → arada **~10 Hz** iyi bir seçimdir (bkz. 10.9).
+- **Kartta yeri:** Alçak geçirenin kapasitörü **ADC pininin dibine** konur. Böylece filtreden sonra iz üzerinden yeni gürültü binmez.
+
+### 10.3 Alçak geçiren: RC filtre ne yapar?
 
 **Benzetme:** R dar bir boru, C bir kova. Giriş gerilimi kovayı doldurmaya çalışan sudur.
 - **Yavaş değişim:** Kova dolup boşalmaya yetişir; çıkış girişi takip eder.
@@ -272,7 +320,40 @@ Ayrı derste ayrıntılı: [Güç ve decoupling](../../Konular/guc-ve-decoupling
 
 **Bedeli:** `τ = RC`. Filtre güçlendikçe (f_c düştükçe) sinyal yavaşlar. Ani bir değişimin %99'una oturmak ~5τ sürer.
 
-### 10.2 Aliasing nedir? Tekerlek örneği
+### 10.4 Yüksek geçiren: AC kuplaj
+
+Kapasitör **sabit kısmı (DC) durdurur, değişen kısmı (AC) geçirir**:
+
+| | Giriş | Çıkış |
+|---|---|---|
+| DC kısım | 2,5 V | **0 V** (engellendi) |
+| AC kısım | ±0,1 V, 1 kHz | **±0,1 V, 1 kHz** (geçti) |
+
+**Benzetme:** Kapasitör, borunun ortasına gerilmiş lastik bir zardır.
+- **Sabit akış (DC):** Su zarı bir kez gerer, sonra akış durur.
+- **İleri-geri itme (AC):** Zar ileri geri esner. Su karşıya geçmese de hareket karşı tarafa aktarılır.
+
+Davranış, alçak geçirenin tam aynasıdır:
+
+| Frekans | Çıkışa geçen |
+|---|---|
+| f_c / 10 | %10 |
+| f_c | %70,7 |
+| 10 × f_c | %99,5 |
+
+**Hesap: R neden "yük"?** Ayrı bir R koymazsın; kapasitörden sonra gelen katın (ör. op-amp girişi) giriş direnci R'nin yerini tutar.
+- Yük 10 kΩ, f_c 10 Hz → `C = 1/(2π × 10 kΩ × 10 Hz) ≈ 1,6 µF`.
+- 1,6 µF standart değer değil. **Bir üst değeri** seç: 2,2 µF → f_c ≈ 7,2 Hz. Kesim aşağı kayar; güvenli taraf budur.
+- **Yük değişirse f_c de değişir:** Aynı 1,6 µF, 1 kΩ'luk bir kata bağlanırsa f_c ≈ 100 Hz olur.
+
+**Neden film kapasitör?** Kapasitör sinyal yolunda seri durur; kusurları doğrudan sinyale karışır.
+- **Mikrofonik etki:** X7R titreşimi gerilime çevirir; karta vurunca sinyalde gürültü görürsün.
+- **DC bias:** X7R'nin kapasitesi DC gerilimle düşer. 1,6 µF yarıya inerse f_c 10 Hz'den 20 Hz'e çıkar ve sinyalin alt frekansları da kesilir.
+- Film kapasitör bu iki sorunu göstermez.
+
+**Dikkat — gaz sensörüne AC kuplaj konmaz:** Gaz seviyesi tam da **DC bilgidir**; gaz arttıkça çıkış yükselir ve orada kalır. Seri kapasitör bu bilgiyi siler, cihaz kalıcı gazı göremez. AC kuplaj yalnızca bilginin değişen kısımda olduğu sinyallerde (mikrofon, titreşim) kullanılır.
+
+### 10.5 Aliasing nedir? Tekerlek örneği
 
 ADC bir fotoğraf makinesidir. **f_s**, saniyede çektiği fotoğraf sayısıdır.
 
@@ -285,7 +366,7 @@ Fotoğrafları art arda izleyen biri tekerleğin saniyede 10 tur döndüğünü 
 
 **Sınır (Nyquist):** Bir periyotta en az 2 fotoğraf gerekir. Bu yüzden ancak **f_s/2'nin altındaki** frekanslar doğru görünür.
 
-### 10.3 Hesap tarifi (2 adım)
+### 10.6 Hesap tarifi (2 adım)
 
 1. **Kontrol et:** `f < f_s/2` mi? Evet → sorun yok, sinyal kendi frekansında görünür.
 2. **Değilse:** f'ye **en yakın f_s katını** bul (f_s, 2·f_s, 3·f_s…). Görünen frekans = `|f − o kat|`.
@@ -303,17 +384,37 @@ Fotoğrafları art arda izleyen biri tekerleğin saniyede 10 tur döndüğünü 
 | 1 kHz | 950 Hz | 500 Hz | 1000 | **50 Hz** (şebeke gürültüsü sanırsın!) |
 | 100 Hz | 30 Hz | 50 Hz | — | **30 Hz** (alias yok) |
 
-### 10.4 Neden yazılımla düzeltilemez?
+### 10.7 Filtre ADC'den önce mi, sonra mı?
 
-Örneklemeden sonra elde sadece sayılar kalır. Sahte 10 Hz ile gerçek bir 10 Hz sinyal **aynı sayıları** üretir; yazılım hangisinin sahte olduğunu bilemez. Bu yüzden yüksek frekanslı gürültü **ADC'den önce**, analog olarak bastırılmalıdır. Bu işi yapan RC filtreye **anti-aliasing filtresi** denir.
+**Aliasing'e karşı filtre mutlaka ADC'den önce** konur. Nedeni sayılarla görülür: f_s = 100 Hz iken 10 Hz'lik gerçek sinyal ile 110 Hz'lik gürültünün ADC'den çıkan değerleri:
 
-### 10.5 f_c neden f_s/2'nin çok altında seçilir?
+| Ölçüm no | 10 Hz gerçek sinyal | 110 Hz gürültü |
+|---|---|---|
+| 0 | 0,00 | 0,00 |
+| 1 | 0,59 | 0,59 |
+| 2 | 0,95 | 0,95 |
+| 3 | 0,95 | 0,95 |
+| 4 | 0,59 | 0,59 |
 
-Tek RC yumuşak keser (10.1 tablosu).
+İki sütun **birebir aynıdır**. Yazılım yalnızca bu sayıları görür; hangisinin gerçek olduğunu bilemez. Çorbaya düşen tuz gibi: karıştıktan sonra ayıklanamaz, düşmeden önce durdurulmalıdır. Bu işi yapan RC filtreye **anti-aliasing filtresi** denir.
+
+**ADC'den sonraki (yazılım) filtre ne işe yarar?** f_s/2'nin **altındaki** gürültü karışmaz, kendi frekansında kalır; yazılım onu ayırabilir. Örnek: f_s = 1 kHz iken 50 Hz şebeke gürültüsü 500 Hz'in altındadır; 20 ms ortalama onu tamamen siler. Yazılım filtresi ucuzdur, sonradan değiştirilebilir ve sıcaklıkla kaymaz.
+
+| | ADC'den **önce** (RC) | ADC'den **sonra** (yazılım) |
+|---|---|---|
+| Neye karşı | f_s/2'nin **üstündeki** gürültü | f_s/2'nin **altındaki** gürültü |
+| Neden orada | Karıştıktan sonra ayrılamaz | Karışmadığı için ayrılabilir |
+| Gaz sensörü örneği | 10 kΩ + 1,5 µF | 20 ms ortalama (50 Hz için) |
+
+İkisi birbirinin yerine geçmez; gerçek kartta ikisi birlikte kullanılır.
+
+### 10.8 f_c neden f_s/2'nin çok altında seçilir?
+
+Tek RC yumuşak keser (10.3 tablosu).
 - **Kötü seçim:** f_s = 1 kHz, f_c = 500 Hz. 900 Hz'lik gürültünün **%49'u** geçer ve 100 Hz'e alias olur.
 - **Pratik kural:** `ölçmek istediğin sinyal < f_c ≪ f_s/2`. f_c'yi f_s/2'nin en az 10'da biri seç; daha sert kesim gerekiyorsa f_s'yi artır veya 2. kademe filtre ekle.
 
-### 10.6 Tasarım örneği: gaz sensörü girişi
+### 10.9 Tasarım örneği: gaz sensörü girişi
 
 LEL dedektöründe sensör sinyali saniyeler mertebesinde değişir; asıl düşman 50 Hz şebeke kuplajı ve anahtarlamalı regülatör gürültüsüdür.
 
@@ -332,12 +433,15 @@ LEL dedektöründe sensör sinyali saniyeler mertebesinde değişir; asıl düş
 - **Yük deposu:** 1,5 µF, ADC'nin ~5 pF örnekleme kapasitörünün yanında çok büyüktür. 10 kΩ kaynak empedansına rağmen ADC doğru okur. Bkz. [MCU dersi – ADC örnekleme](../05-mikrodenetleyici-donanimi/ozet.md).
 - **Kapasitör türü:** 1,5 µF C0G büyük ve pahalıdır. 3,3 V'ta, ≥ 16 V dereceli X7R yeterlidir; f_c'nin ±%20 kayması bu uygulamada sorun değildir. Y5V kullanma.
 
-### 10.7 Kendin dene
+### 10.10 Kendin dene
 
 1. f_s = 100 Hz, girişte 90 Hz gürültü. Kayıtta hangi frekansta görünür?
 2. f_s = 100 Hz, girişte 30 Hz sinyal. Hangi frekansta görünür?
 3. f_s = 200 Hz, girişte 190 Hz gürültü. Hangi frekansta görünür?
 4. 10 kΩ direnç ile f_c ≈ 16 Hz istiyorsun. Kapasitör kaç olmalı?
+5. Pil gerilimini ölçüyorsun (saatler içinde değişir). Kartta 500 kHz'lik regülatör gürültüsü var. Hangi filtreyi koyarsın?
+6. 1,6 µF'lık AC kuplaj kapasitörünü 10 kΩ yerine 1 kΩ giriş dirençli bir kata bağlarsan f_c kaç olur?
+7. f_s = 1 kHz. 50 Hz şebeke gürültüsünü yazılımla temizleyebilir misin? Neden?
 
 <details>
 <summary>Cevaplar</summary>
@@ -346,6 +450,9 @@ LEL dedektöründe sensör sinyali saniyeler mertebesinde değişir; asıl düş
 2. 30 < 50 → alias yok → **30 Hz**
 3. 190 > 100 → en yakın kat 200 → `|190 − 200| =` **10 Hz**
 4. `C = 1/(2π × 10 kΩ × 16 Hz) ≈` **1 µF**
+5. **Alçak geçiren.** Bilgi yavaş, gürültü hızlı. C, ADC pininin dibinde toprağa.
+6. `f_c = 1/(2π × 1 kΩ × 1,6 µF) ≈` **100 Hz**. R 10 kat küçüldü, f_c 10 kat büyüdü.
+7. **Evet.** 50 < 500 (f_s/2) olduğu için alias olmaz; gürültü kendi frekansında kalır ve 20 ms ortalama onu siler.
 
 </details>
 
@@ -363,4 +470,4 @@ Aşağıdaki maddeler [kontrol-listesi.md](../../Sematik-Tasarim/kontrol-listesi
 
 ## Kontrol soruları
 
-→ [quiz.md](quiz.md) · 14 soru, 6'sı hesap
+→ [quiz.md](quiz.md) · 16 soru, 6'sı hesap
