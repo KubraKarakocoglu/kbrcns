@@ -301,11 +301,13 @@ Bazen bir yere iki farklı parça takılabilecek şekilde tasarım yapılır. Bu
 
 Aşağıdaki maddeler [kontrol-listesi.md](../../Sematik-Tasarim/kontrol-listesi.md) dosyasına işlendi (v1.4, bölüm 1):
 
+> BOM'daki parçaların yaşam döngüsü ve ikinci kaynak maddesi zaten bölüm 9'da.
+
 - [x] Blok diyagram sayfası ve revizyon/değişiklik tablosu var
 - [x] Sembollerde gizli güç pini yok; pin numaraları datasheet pin tablosuyla karşılaştırıldı
 - [x] Footprint'ler datasheet land pattern'ine göre kontrol edildi; mekanik parçalar 1:1 kâğıt testinden geçti
 - [x] DNP ve montaj seçenekleri açıkça işaretli; varyant BOM'ları ayrı
-- [x] BOM'daki parçalar Active; NRND/EOL yok; kritik parçalar için alternatif MPN var
+- [x] Kritik değerlerin hesabı, test noktalarında beklenen gerilimler ve layout kuralları şematikte not olarak yazılı
 
 ## Kontrol soruları
 

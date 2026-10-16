@@ -212,9 +212,11 @@ Hangi sınıfta üretileceğini üretim notuna yaz; sınıf yükseldikçe fiyat 
 
 Aşağıdaki maddeler [kontrol-listesi.md](../../Sematik-Tasarim/kontrol-listesi.md) dosyasına işlendi (v1.4, bölüm 9 ve 13):
 
+> MLCC'lerin kart kenarı ve kırma çizgisinden uzak olması maddesi zaten bölüm 10'da.
+
 - [x] Tasarım kuralları üreticinin kabiliyetinin bir kademe üstünde; kaplama türü parçalara uygun
 - [x] Fiducial'lar: en az 3, asimetrik, çevresi boş
-- [x] QFN termal pedi pasta penceresi %50–80; MLCC'ler kırma çizgisi ve kart kenarından uzak
+- [x] QFN termal pedi pasta penceresi %50–80
 - [x] Test noktaları tek yüzde, Ø ≥ 1 mm; programlama pogo pedleri; kalibrasyon arayüzü kutu kapalıyken erişilebilir
 - [x] Üretim paketi tek revizyon adıyla; pick & place dönüş açısı dizgi firmasıyla teyit edildi
 - [x] Firmware self-test: raylar, ısıtıcı/yük akımı, sensör açık/kısa devre

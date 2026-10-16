@@ -10,7 +10,7 @@ kbrcns/
 ├── Elektronik/
 │   ├── Komponentler/       Komponent dersleri: direnç, kapasitör, bobin... (NN-ad)
 │   ├── EMC/                EMC dersleri: temeller, kart tasarımı, testler (NN-ad)
-│   ├── Konular/            Uygulama konuları: decoupling, op-amp, ADC...
+│   ├── Konular/            Uygulama konuları: güç, op-amp, haberleşme, şematik, PCB...
 │   ├── Sematik-Tasarim/    Kontrol listesi + hatalar ve dersler
 │   └── Projeler/           Proje kartları (NN-proje-adi)
 ├── Kaynaklar/              Kütüphane: video / kitap / PDF listesi

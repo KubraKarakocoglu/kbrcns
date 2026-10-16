@@ -1,4 +1,4 @@
-# Şematik Kontrol Listesi · v1.3
+# Şematik Kontrol Listesi · v1.4
 
 > **Kullanım:** Bu ana liste. Her projede `Yeni-Kayit.ps1 -Tur Proje` bunu `sematik-review.md` olarak proje klasörüne kopyalar; işaretlemeyi orada yap.
 > Bir konu veya hatadan yeni madde çıktığında **buraya** ekle ve sürüm numarasını artır.
@@ -14,6 +14,11 @@
 - [ ] Her IC, datasheet'teki "Typical Application" devresiyle karşılaştırıldı
 - [ ] Kullanılmayan pinler datasheet önerisine göre bağlandı (boşta bırakılan giriş yok)
 - [ ] Kullanılmayan op-amp kanalı tampon (buffer) olarak bağlandı, girişi ortak mod aralığında bir gerilime çekildi
+- [ ] Blok diyagram sayfası ve revizyon/değişiklik tablosu var
+- [ ] Sembollerde gizli güç pini yok; pin numaraları datasheet pin tablosuyla karşılaştırıldı
+- [ ] Footprint'ler datasheet land pattern'ine göre kontrol edildi; mekanik parçalar 1:1 kâğıt testinden geçti
+- [ ] DNP ve montaj seçenekleri açıkça işaretli; varyant BOM'ları ayrı
+- [ ] Kritik değerlerin hesabı, test noktalarında beklenen gerilimler ve layout kuralları şematikte not olarak yazılı
 
 ## 2. Güç girişi ve koruma
 
@@ -21,6 +26,9 @@
 - [ ] Aşırı akım koruması var (sigorta veya PTC); değeri nominal akımın üstünde, kablo/iz kapasitesinin altında
 - [ ] Geçici gerilime karşı TVS diyot: VRWM ≥ en yüksek normal giriş gerilimi, kenetleme gerilimi (VC) ≤ korunan devrenin mutlak maksimum değeri
 - [ ] Hot-plug riski değerlendirildi: uzun kablo endüktansı + düşük ESR'li seramik giriş kapasitörü gerilim sıçraması üretebilir
+- [ ] Sigorta gecikmeli tip; I²t değeri açılıştaki inrush'a göre kontrol edildi
+- [ ] P-MOSFET ters koruma kullanıldıysa gate–source Zener ile korunuyor
+- [ ] PTC kullanıldıysa en yüksek ortam sıcaklığındaki tutma akımı yük akımının üstünde
 
 ## 3. Regülatörler
 
@@ -31,6 +39,8 @@
 - [ ] **Seramik kapasitör DC bias:** yüksek değerli, küçük paketli MLCC'ler çalışma geriliminde nominal kapasitesinin büyük kısmını kaybedebilir; efektif değer üretici eğrisinden kontrol edildi
 - [ ] Enable / power-good sıralaması gerekiyorsa tanımlı
 - [ ] Analog besleme dijitalden ayrılması gerekiyor mu? (ferrit boncuk veya LC filtre)
+- [ ] Güç bütçesi tablosu şematikte; her rayın gerilimi ve en yüksek akımı yazılı
+- [ ] Hassas analog varsa buck'ın hafif yük modu (PFM) değerlendirildi; gerekirse FPWM
 
 ## 4. Decoupling
 
@@ -72,6 +82,12 @@
 - [ ] ADC referansının kararlılığı ve gürültüsü ölçüm hassasiyetine yetiyor; mümkünse oransal (ratiometric) ölçüm tercih edildi
 - [ ] Dış dünyaya açılan sensör girişlerinde seri direnç + kenetleme (clamp) koruması var
 - [ ] Gerilim bölücüde empedans ↔ akım tüketimi ↔ ADC yüklemesi dengelendi
+- [ ] Yüksek kazançlı DC yolda ofset × kazanç hesaplandı; gerekiyorsa zero-drift op-amp
+- [ ] Kazanç ve köprü dirençleri yan yana, ısı kaynaklarından uzak (layout notu)
+- [ ] INA'nın REF pini düşük empedanslı (tamponlu) bir kaynaktan sürülüyor
+- [ ] Köprü/sensör beslemesi sensör datasheet'ine göre kararlı (duyarlılık beslemeye bağlı)
+- [ ] Op-amp/INA girişlerinde RF'e karşı küçük RC (C0G) var
+- [ ] Kenetleme diyotlarının arıza akımı besleme rayını yükseltmiyor
 
 ## 7. Dijital arayüzler
 
@@ -80,6 +96,12 @@
 - [ ] UART bağlantısı çaprazlandı: TX → RX, RX → TX
 - [ ] SPI CS hatlarında pull-up var (boot sırasında hiçbir slave seçili olmasın)
 - [ ] Hızlı kenarlı hatlarda seri sonlandırma direnci yeri bırakıldı (tipik 22–33 Ω)
+- [ ] RS-485: 120 Ω sonlandırma yalnızca uç cihazlarda (jumper/DNP); bias hesabı ile boşta fark ≥ 200 mV; GND referansı veya yalıtım
+- [ ] RS-485 DE/RE kontrolü firmware'de son stop bitinden sonra bırakılıyor
+- [ ] UART'ta saat kaynağı sıcaklık aralığında yeterli (kristal veya kalibrasyon); RX'te pull-up
+- [ ] I²C cihaz adresleri listelendi; hat uzunluğu ve kapasitansı kart içiyle sınırlı
+- [ ] Çok sayıda SPI slave'inde kod çözücü kullanıldıysa enable'ı açılışta kapalı
+- [ ] Debug UART başlığı veya test pedi var
 
 ## 8. Konnektörler ve dış dünya
 
@@ -93,6 +115,8 @@
 - [ ] Programlama ve kalibrasyon arayüzü üretimde erişilebilir
 - [ ] Durum LED'i var (güç + MCU kontrollü)
 - [ ] BOM: tüm parçalar aktif üretimde, stokta ve mümkünse ikinci kaynaklı
+- [ ] Test noktaları tek yüzde, Ø ≥ 1 mm; programlama pogo pedleri; kalibrasyon arayüzü kutu kapalıyken erişilebilir
+- [ ] Firmware self-test: raylar, ısıtıcı/yük akımı, sensör açık/kısa devre
 
 ## 10. Pasif komponentler
 
@@ -128,7 +152,33 @@
 - [ ] Anahtarlamalı regülatör: sıcak döngü en küçük, SW düğümü küçük, giriş filtresi
 - [ ] Kablo ekranı konnektörde 360° sonlandırılıyor
 
-## 12. Kapanış
+## 12. Yük sürme
+
+> Logic-level MOSFET ve gate pull-down maddeleri bölüm 5'te, flyback diyotu bölüm 10'da.
+
+- [ ] MCU'nun pin başına ve toplam port akımı sınırları aşılmıyor
+- [ ] BJT'ler doyumda (Ib ≈ Ic/10); her anahtarın kaybı ve sıcaklığı hesaplandı
+- [ ] ULN2003 tipi dizilerde COM pini röle beslemesine bağlı
+- [ ] Röle kontak değeri yük türüne (AC/DC, endüktif) uygun; rölenin enerjili/enerjisiz çalışma şekli bilinçli seçildi
+- [ ] Buzzer tipi doğru sürülüyor (transducer → rezonans frekansında PWM); ses seviyesi standarda göre doğrulanacak
+- [ ] Solenoid/kilit çıkışlarında firmware zaman aşımı ve kablo tarafında TVS var
+
+## 13. PCB layout ve üretim
+
+> Bu bölüm layout aşamasında ve üretim dosyaları hazırlanırken işaretlenir.
+
+- [ ] Mekanik (kutu, konnektör, buton, montaj delikleri) yerleşimden önce sabitlendi
+- [ ] Güç izleri akım ve gerilim düşümüne göre hesaplandı; net sınıfları tanımlı
+- [ ] Yüksek akım dönüşleri (ısıtıcı, röle, buck girişi) analog ölçüm bölgesinin altından geçmiyor
+- [ ] Yüksek gerilim/şebeke ve Ex gereksinimleri için clearance ve creepage standarttan alındı
+- [ ] Küçük pasiflerin pedinde açık via yok; alt pedli parçalarda termal via dizisi
+- [ ] Bağlanmamış bakır ada yok; DRC sıfır hata; Gerber görüntüleyicide kontrol edildi
+- [ ] Tasarım kuralları üreticinin kabiliyetinin bir kademe üstünde; kaplama türü parçalara uygun
+- [ ] Fiducial'lar: en az 3, asimetrik, çevresi boş
+- [ ] QFN termal pedi pasta penceresi %50–80
+- [ ] Üretim paketi tek revizyon adıyla; pick & place dönüş açısı dizgi firmasıyla teyit edildi
+
+## 14. Kapanış
 
 - [ ] Şematik bu listeyle ikinci bir göz tarafından (kişi veya Claude) review edildi
 - [ ] Bu tasarımdan çıkan dersler [hatalar-dersler.md](/Elektronik/Sematik-Tasarim/hatalar-dersler.md) dosyasına işlendi
@@ -137,6 +187,7 @@
 
 | Sürüm | Tarih | Değişiklik |
 |---|---|---|
+| v1.4 | 2026-10-16 | Şematik ve PCB konularından (7 ders): bölüm 1, 2, 3, 6, 7, 9'a maddeler; yeni bölüm 12 (Yük sürme) ve 13 (PCB layout ve üretim); Kapanış bölüm 14 oldu |
 | v1.3 | 2026-10-14 | "Aliasing ve anti-aliasing filtresi" konusundan 5 madde (bölüm 6) |
 | v1.2 | 2026-10-12 | Komponent ve EMC derslerinden maddeler: bölüm 5'e 6 madde, yeni bölüm 10 (Pasif komponentler) ve 11 (EMC) |
 | v1.1 | 2026-10-12 | "Güç ve decoupling" konusundan 4 madde eklendi (bölüm 4) |

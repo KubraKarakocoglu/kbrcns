@@ -53,4 +53,21 @@ Durum: ⬜ Başlanmadı · 🟨 Devam ediyor · ✅ Bitti
 | [Analog Devices AN-1368 – Ferrite Bead Demystified](https://www.analog.com/en/resources/app-notes/an-1368.html) | App note | EN | Orta | ⬜ | Ferrit boncuk dersi |
 | [TI SLVA477 – Basic Calculation of a Buck Converter's Power Stage](https://ti.com/lit/pdf/SLVA477) | App note | EN | Orta | ⬜ | Bobin dersi |
 | [NXP UM10204 – I²C-bus specification](https://www.nxp.com/docs/en/user-guide/UM10204.pdf) | Spesifikasyon | EN | Orta | ⬜ | Pull-up hesabı · Direnç dersi |
+| TI SLOD006 – *Op Amps for Everyone* (Ron Mancini) | Kitap (ücretsiz PDF) | EN | Orta | ⬜ | "Op-amp ve sensör ön ucu" konusunun ana kaynağı · ti.com'da numarayla ara |
+| Analog Devices – *A Designer's Guide to Instrumentation Amplifiers* | Kitap (ücretsiz) | EN | Orta | ⬜ | INA kullanımı, REF pini, RFI filtresi |
+| TI SLLA272 – *The RS-485 Design Guide* | App note | EN | Başlangıç → Orta | ⬜ | Sonlandırma, bias, topoloji · Haberleşme konusu |
+| NXP AN10441 – *Level shifting techniques in I²C-bus design* | App note | EN | Orta | ⬜ | I²C seviye çevirme |
+| TI SLVA139 – *Reverse Current/Battery Protection Circuits* | App note | EN | Orta | ⬜ | Ters polarite yöntemleri · Güç katı konusu |
+| TI SLUA618 – *Fundamentals of MOSFET and IGBT Gate Driver Circuits* | App note | EN | Orta → İleri | ⬜ | Gate sürme · Yük sürme konusu |
+| Nexperia – *Power MOSFETs Application Handbook* | El kitabı | EN | Orta | ⬜ | MOSFET parametreleri, SOA |
 | Kullandığın her IC'nin datasheet'i | Datasheet | EN | — | — | "Application Information" ve "Layout Guidelines" bölümleri şematik için en kritik kaynak |
+
+## Araçlar ve standartlar
+
+| Kaynak | Tür | Dil | Seviye | Durum | Not |
+|---|---|---|---|---|---|
+| Saturn PCB Toolkit | Araç (ücretsiz) | EN | — | ⬜ | İz genişliği, via akımı, empedans (IPC-2152) |
+| IPC-2221B / IPC-2152 | Standart | EN | Orta | — | PCB tasarımı, iz akımı, iletken boşlukları |
+| IPC-7351 / IPC-7525 | Standart | EN | Orta | — | Footprint (land pattern) / şablon (stencil) tasarımı |
+| IPC-A-610 | Standart | EN | Orta | — | Monte edilmiş kart kabul kriterleri (Class 1/2/3) |
+| IEC 60079-11 | Standart | EN | İleri | — | Kendinden güvenlik (Ex i); Ex onaylı gaz dedektörleri |

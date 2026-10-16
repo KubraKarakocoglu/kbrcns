@@ -18,6 +18,13 @@ Ana kaynak: _seçilecek (CS50x 2026 veya Kaan Aslan – CSD)_
 |---|---|---|
 | [Güç ve decoupling](Elektronik/Konular/guc-ve-decoupling/ozet.md) | ⬜ | - |
 | [Aliasing ve anti-aliasing filtresi](Elektronik/Konular/aliasing-ve-anti-aliasing-filtresi/ozet.md) | ⬜ | - |
+| [Şematik çizim ve dokümantasyon](Elektronik/Konular/sematik-cizim-ve-dokumantasyon/ozet.md) | ⬜ | - |
+| [Güç katı: koruma ve regülatör seçimi](Elektronik/Konular/guc-kati-koruma-ve-regulator/ozet.md) | ⬜ | - |
+| [MOSFET, transistör ve yük sürme](Elektronik/Konular/mosfet-transistor-ve-yuk-surme/ozet.md) | ⬜ | - |
+| [Op-amp ve sensör ön ucu](Elektronik/Konular/op-amp-ve-sensor-on-ucu/ozet.md) | ⬜ | - |
+| [Haberleşme arayüzleri](Elektronik/Konular/haberlesme-arayuzleri/ozet.md) | ⬜ | - |
+| [PCB yerleşim ve iz çizimi](Elektronik/Konular/pcb-yerlesim-ve-iz-cizimi/ozet.md) | ⬜ | - |
+| [Üretilebilirlik ve test için tasarım](Elektronik/Konular/uretilebilirlik-ve-test/ozet.md) | ⬜ | - |
 <!-- KONU-EKLE -->
 
 ## Komponentler

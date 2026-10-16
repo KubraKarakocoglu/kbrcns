@@ -288,7 +288,9 @@ Tasarıma bu tabloyla başla. Hem regülatör seçimini hem sigortayı hem de ka
 
 Aşağıdaki maddeler [kontrol-listesi.md](../../Sematik-Tasarim/kontrol-listesi.md) dosyasına işlendi (v1.4, bölüm 2–3):
 
-- [x] Arkadaki regülatörün giriş dayanımı, TVS'nin kenetleme gerilimi (VC) üstünde
+> TVS'nin kenetleme gerilimi (VC) ile arkadaki devrenin dayanımı maddesi zaten bölüm 2'de.
+
+- [x] Sigorta gecikmeli tip; I²t değeri açılıştaki inrush'a göre kontrol edildi
 - [x] P-MOSFET ters koruma kullanıldıysa gate–source Zener ile korunuyor
 - [x] PTC kullanıldıysa en yüksek ortam sıcaklığındaki tutma akımı yük akımının üstünde
 - [x] Güç bütçesi tablosu şematikte; her rayın gerilimi ve en yüksek akımı yazılı

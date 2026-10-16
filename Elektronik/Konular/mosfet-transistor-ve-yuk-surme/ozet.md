@@ -296,9 +296,11 @@ PWM, anahtarı çok hızlı açıp kapayarak ortalama gücü ayarlar: LED parlak
 
 Aşağıdaki maddeler [kontrol-listesi.md](../../Sematik-Tasarim/kontrol-listesi.md) dosyasına işlendi (v1.4, yeni bölüm 12 "Yük sürme"):
 
-- [x] MOSFET'in R_DS(on) değeri MCU'nun gate geriliminde belirtilmiş (Vgs(th)'ye göre seçilmedi)
-- [x] Gate/baz pull-down'ları var; açılışta ve reset'te hiçbir yük kendiliğinden çalışmıyor
+> Logic-level MOSFET ve gate pull-down maddeleri zaten bölüm 5'te, flyback diyotu bölüm 10'da.
+
+- [x] MCU'nun pin başına ve toplam port akımı sınırları aşılmıyor
 - [x] BJT'ler doyumda (Ib ≈ Ic/10); her anahtarın kaybı ve sıcaklığı hesaplandı
+- [x] ULN2003 tipi dizilerde COM pini röle beslemesine bağlı
 - [x] Röle kontak değeri yük türüne (AC/DC, endüktif) uygun; rölenin enerjili/enerjisiz çalışma şekli bilinçli seçildi
 - [x] Buzzer tipi doğru sürülüyor (transducer → rezonans frekansında PWM); ses seviyesi standarda göre doğrulanacak
 - [x] Solenoid/kilit çıkışlarında firmware zaman aşımı ve kablo tarafında TVS var

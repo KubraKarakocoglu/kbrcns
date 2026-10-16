@@ -240,7 +240,7 @@ Ayrıntı: [EMC için kart tasarımı, bölüm 6–7](../../EMC/02-emc-icin-kart
 
 ## Şematik kontrol listesine eklenenler
 
-Aşağıdaki maddeler [kontrol-listesi.md](../../Sematik-Tasarim/kontrol-listesi.md) dosyasına işlendi (v1.4, bölüm 7–8):
+Aşağıdaki maddeler [kontrol-listesi.md](../../Sematik-Tasarim/kontrol-listesi.md) dosyasına işlendi (v1.4, bölüm 7):
 
 - [x] RS-485: 120 Ω sonlandırma yalnızca uç cihazlarda (jumper/DNP); bias hesabı ile boşta fark ≥ 200 mV; GND referansı veya yalıtım
 - [x] RS-485 DE/RE kontrolü firmware'de son stop bitinden sonra bırakılıyor

@@ -298,9 +298,9 @@ Kabloyla dışarıdan gelen her sensör girişi bir gün yanlış gerilim, ESD v
 Aşağıdaki maddeler [kontrol-listesi.md](../../Sematik-Tasarim/kontrol-listesi.md) dosyasına işlendi (v1.4, bölüm 6):
 
 - [x] Yüksek kazançlı DC yolda ofset × kazanç hesaplandı; gerekiyorsa zero-drift op-amp
-- [x] Kazanç dirençleri ince film, %0,1–%1; sıcaklık kaynaklarından uzak ve yan yana
+- [x] Kazanç ve köprü dirençleri yan yana, ısı kaynaklarından uzak (layout notu)
 - [x] INA'nın REF pini düşük empedanslı (tamponlu) bir kaynaktan sürülüyor
-- [x] Köprü beslemesi kararlı; ADC referansıyla ilişkisi (oransal / ayrı referans) not edildi
+- [x] Köprü/sensör beslemesi sensör datasheet'ine göre kararlı (duyarlılık beslemeye bağlı)
 - [x] Op-amp/INA girişlerinde RF'e karşı küçük RC (C0G) var
 - [x] Kenetleme diyotlarının arıza akımı besleme rayını yükseltmiyor
 

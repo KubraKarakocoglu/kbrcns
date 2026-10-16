@@ -260,9 +260,11 @@ Kartı bir **şehir planı** gibi düşün: sanayi bölgesi (güç, röle, buzze
 
 Aşağıdaki maddeler [kontrol-listesi.md](../../Sematik-Tasarim/kontrol-listesi.md) dosyasına işlendi (v1.4, yeni bölüm 13 "PCB layout ve üretim"):
 
+> Kesintisiz GND düzlemi maddesi zaten bölüm 11'de (EMC).
+
 - [x] Mekanik (kutu, konnektör, buton, montaj delikleri) yerleşimden önce sabitlendi
 - [x] Güç izleri akım ve gerilim düşümüne göre hesaplandı; net sınıfları tanımlı
-- [x] GND düzlemi kesintisiz; yüksek akım dönüşleri analog bölgenin altından geçmiyor
+- [x] Yüksek akım dönüşleri (ısıtıcı, röle, buck girişi) analog ölçüm bölgesinin altından geçmiyor
 - [x] Yüksek gerilim/şebeke ve Ex gereksinimleri için clearance ve creepage standarttan alındı
 - [x] Küçük pasiflerin pedinde açık via yok; alt pedli parçalarda termal via dizisi
 - [x] Bağlanmamış bakır ada yok; DRC sıfır hata; Gerber görüntüleyicide kontrol edildi
