@@ -2,7 +2,7 @@
 
 - **Oluşturma:** 2026-10-16
 - **Tüm kaynaklar:** [kaynaklar.md](kaynaklar.md)
-- **Bağlantılı:** [Aliasing ve anti-aliasing filtresi](../aliasing-ve-anti-aliasing-filtresi/ozet.md) · [Kapasitör, bölüm 10 (RC filtre)](../../Komponentler/02-kapasitor/ozet.md#10-derinleştirme-rc-filtre-ve-aliasing) · [Mikrodenetleyici, ADC girişi](../../Komponentler/05-mikrodenetleyici-donanimi/ozet.md#7-adc-girişi) · [Direnç (bölücü, ince film)](../../Komponentler/01-direnc/ozet.md#53-gerilim-bölücü-ve-adc) · Kontrol listesi bölüm 6
+- **Bağlantılı:** [ADC ile ölçüm: pratik rehber](../adc-ile-olcum/ozet.md) · [Aliasing ve anti-aliasing filtresi](../aliasing-ve-anti-aliasing-filtresi/ozet.md) · [Kapasitör, bölüm 10 (RC filtre)](../../Komponentler/02-kapasitor/ozet.md#10-derinleştirme-rc-filtre-ve-aliasing) · [Mikrodenetleyici, ADC girişi](../../Komponentler/05-mikrodenetleyici-donanimi/ozet.md#7-adc-girişi) · [Direnç (bölücü, ince film)](../../Komponentler/01-direnc/ozet.md#53-gerilim-bölücü-ve-adc) · Kontrol listesi bölüm 6
 
 > Sayısal değerler **tipik başlangıç noktalarıdır**; tasarım değeri için kullandığın op-amp, sensör ve ADC'nin datasheet'i esastır. Pellistor değerleri sensör modeline göre çok değişir.
 >

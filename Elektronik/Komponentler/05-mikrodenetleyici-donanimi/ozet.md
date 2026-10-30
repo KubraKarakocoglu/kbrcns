@@ -141,6 +141,8 @@ Her bloğu aşağıda tek tek inceleyeceğiz. Decoupling ayrı derste: [Güç ve
 - **Aşırı örnekleme:** Sinyalde yeterli gürültü varsa her 4 kat örnekleme 1 bit çözünürlük kazandırır.
 - **Toprak:** ADC bölümünü dijital kenarlardan uzak tut, ama GND düzlemini bölme.
 
+→ Tablolar, hata bütçesi, giriş devresi reçeteleri ve testli C kodu: [ADC ile ölçüm: pratik rehber](../../Konular/adc-ile-olcum/ozet.md)
+
 ## 8. İlk kart: bring-up adımları
 
 1. **Gözle kontrol:** Kısa devre, ters takılmış parça, polarite, lehim köprüsü (özellikle QFN ve ince adımlı paketler).

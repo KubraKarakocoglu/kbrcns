@@ -3,7 +3,7 @@
 - **Oluşturma:** 2026-10-14
 - **İlk kaynak:** https://www.analog.com/media/en/training-seminars/tutorials/MT-002.pdf
 - **Tüm kaynaklar:** [kaynaklar.md](kaynaklar.md)
-- **Ön bilgi:** RC filtre → [Kapasitör, bölüm 10](../../Komponentler/02-kapasitor/ozet.md#10-derinleştirme-rc-filtre-ve-aliasing) · ADC girişi → [Mikrodenetleyici donanımı, bölüm 7](../../Komponentler/05-mikrodenetleyici-donanimi/ozet.md#7-adc-girişi) · RF testleri → [EMC testleri, bölüm 4](../../EMC/03-emc-testleri-ve-standartlar/ozet.md#4-bağışıklık-testleri-ne-olur-nerede-kalınır-nasıl-çözülür)
+- **Ön bilgi:** RC filtre → [Kapasitör, bölüm 10](../../Komponentler/02-kapasitor/ozet.md#10-derinleştirme-rc-filtre-ve-aliasing) · ADC girişi → [Mikrodenetleyici donanımı, bölüm 7](../../Komponentler/05-mikrodenetleyici-donanimi/ozet.md#7-adc-girişi) · ADC pratik rehberi → [ADC ile ölçüm](../adc-ile-olcum/ozet.md) · RF testleri → [EMC testleri, bölüm 4](../../EMC/03-emc-testleri-ve-standartlar/ozet.md#4-bağışıklık-testleri-ne-olur-nerede-kalınır-nasıl-çözülür)
 
 > Birden fazla kaynaktan derlendi. Sayısal değerler **tipik başlangıç noktalarıdır**; tasarım değeri için her zaman kullandığın MCU/ADC'nin datasheet'i ve ilgili standart esastır. **Varsayım** diye işaretlenen bozucu genlikleri kartında ölçülerek doğrulanmalıdır.
 >

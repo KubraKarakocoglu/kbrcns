@@ -25,10 +25,11 @@ Yeni konu:
 | 3 | [Güç katı: koruma ve regülatör seçimi](guc-kati-koruma-ve-regulator/ozet.md) | Kartın girişi: sigorta, ters polarite, TVS, LDO/buck, güç bütçesi |
 | 4 | [MOSFET, transistör ve yük sürme](mosfet-transistor-ve-yuk-surme/ozet.md) | Röle, buzzer, LED, kapı otomatiği; açılışta güvenli durum |
 | 5 | [Op-amp ve sensör ön ucu](op-amp-ve-sensor-on-ucu/ozet.md) | Sensörden ADC'ye: köprü, kazanç, ofset, referans |
-| 6 | [Aliasing ve anti-aliasing filtresi](aliasing-ve-anti-aliasing-filtresi/ozet.md) | Örnekleme ve filtre; ön ucun devamı |
-| 7 | [Haberleşme arayüzleri](haberlesme-arayuzleri/ozet.md) | UART, RS-485, I²C, SPI'nin elektriksel tarafı |
-| 8 | [PCB yerleşim ve iz çizimi](pcb-yerlesim-ve-iz-cizimi/ozet.md) | Şematiğin fiziksel karşılığı: yerleşim, iz, mesafe, toprak |
-| 9 | [Üretilebilirlik ve test için tasarım](uretilebilirlik-ve-test/ozet.md) | Kartın üretilip test edilebilmesi; üretim paketi |
+| 6 | [ADC ile ölçüm: pratik rehber](adc-ile-olcum/ozet.md) | İş başvuru kitabı: tablolar, hata bütçesi, giriş reçeteleri, testli C kodu |
+| 7 | [Aliasing ve anti-aliasing filtresi](aliasing-ve-anti-aliasing-filtresi/ozet.md) | Örnekleme ve filtre; ölçüm zincirinin devamı |
+| 8 | [Haberleşme arayüzleri](haberlesme-arayuzleri/ozet.md) | UART, RS-485, I²C, SPI'nin elektriksel tarafı |
+| 9 | [PCB yerleşim ve iz çizimi](pcb-yerlesim-ve-iz-cizimi/ozet.md) | Şematiğin fiziksel karşılığı: yerleşim, iz, mesafe, toprak |
+| 10 | [Üretilebilirlik ve test için tasarım](uretilebilirlik-ve-test/ozet.md) | Kartın üretilip test edilebilmesi; üretim paketi |
 
 Her dersin başında bir **okuma planı** var (genelde 3 oturum). Bir ders için önerilen akış:
 
@@ -47,6 +48,7 @@ Her ders için bir pratik görev. **Şirkete ait şematik, değer veya doküman 
 | Güç katı | Kartın güç bütçesi tablosunu çıkar; her LDO için `P = ΔV × I` ve sıcaklık hesabı yap |
 | Yük sürme | Röle, buzzer ve kilit çıkışlarında gate/baz pull-down var mı bak; kartı defalarca aç-kapa, açılışta bir şey tıklıyor mu? |
 | Op-amp ve sensör | Sensör ön ucunun her test noktasında beklenen gerilimi hesapla, sonra ölç ve karşılaştır |
+| ADC ile ölçüm | Kartında bir ADC kanalına sabit gerilim ver, 1000 örnek al; σ'yı ve gürültüsüz bit sayısını hesapla. Bir pil veya besleme ölçümünün hata bütçesini çıkar |
 | Haberleşme | RS-485 hattında osiloskopla A − B farkını ölç; boşta fark ≥ 200 mV mi, sonlandırma yalnızca uçlarda mı? |
 | PCB yerleşim | Mevcut bir kartta güç izlerinin genişliğini tabloyla kontrol et; GND düzleminde yarık ve ısıtıcı/röle dönüş yollarını izle |
 | Üretilebilirlik | Bir kartın üretim paketini dersteki tabloyla karşılaştır; eksik dosya veya revizyon karışıklığı var mı? |

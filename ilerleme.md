@@ -25,6 +25,7 @@ Ana kaynak: _seçilecek (CS50x 2026 veya Kaan Aslan – CSD)_
 | [Haberleşme arayüzleri](Elektronik/Konular/haberlesme-arayuzleri/ozet.md) | ⬜ | - |
 | [PCB yerleşim ve iz çizimi](Elektronik/Konular/pcb-yerlesim-ve-iz-cizimi/ozet.md) | ⬜ | - |
 | [Üretilebilirlik ve test için tasarım](Elektronik/Konular/uretilebilirlik-ve-test/ozet.md) | ⬜ | - |
+| [ADC ile ölçüm: pratik rehber](Elektronik/Konular/adc-ile-olcum/ozet.md) | ⬜ | - |
 <!-- KONU-EKLE -->
 
 ## Komponentler

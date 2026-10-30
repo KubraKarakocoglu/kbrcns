@@ -60,6 +60,11 @@ Durum: ⬜ Başlanmadı · 🟨 Devam ediyor · ✅ Bitti
 | TI SLVA139 – *Reverse Current/Battery Protection Circuits* | App note | EN | Orta | ⬜ | Ters polarite yöntemleri · Güç katı konusu |
 | TI SLUA618 – *Fundamentals of MOSFET and IGBT Gate Driver Circuits* | App note | EN | Orta → İleri | ⬜ | Gate sürme · Yük sürme konusu |
 | Nexperia – *Power MOSFETs Application Handbook* | El kitabı | EN | Orta | ⬜ | MOSFET parametreleri, SOA |
+| ST AN2834 – *How to get the best ADC accuracy in STM32 microcontrollers* | App note | EN | Orta | ⬜ | "ADC ile ölçüm" konusunun ana kaynağı · st.com'da numarayla ara |
+| ST AN2668 – ADC çözünürlüğünü aşırı örneklemeyle artırma | App note | EN | Orta | ⬜ | Aşırı örnekleme |
+| Silicon Labs AN118 – *Improving ADC Resolution by Oversampling and Averaging* | App note | EN | Orta | ⬜ | Aşırı örneklemenin şartları |
+| Microchip AN685 – *Thermistors in Single Supply Temperature Sensing Circuits* | App note | EN | Başlangıç → Orta | ⬜ | NTC devreleri |
+| Analog Devices MT-001 / MT-003 | Tutorial | EN | Orta | ⬜ | SNR, SINAD, ENOB |
 | Kullandığın her IC'nin datasheet'i | Datasheet | EN | — | — | "Application Information" ve "Layout Guidelines" bölümleri şematik için en kritik kaynak |
 
 ## Araçlar ve standartlar
@@ -71,3 +76,4 @@ Durum: ⬜ Başlanmadı · 🟨 Devam ediyor · ✅ Bitti
 | IPC-7351 / IPC-7525 | Standart | EN | Orta | — | Footprint (land pattern) / şablon (stencil) tasarımı |
 | IPC-A-610 | Standart | EN | Orta | — | Monte edilmiş kart kabul kriterleri (Class 1/2/3) |
 | IEC 60079-11 | Standart | EN | İleri | — | Kendinden güvenlik (Ex i); Ex onaylı gaz dedektörleri |
+| NAMUR NE 43 | Öneri | EN/DE | Orta | — | 4–20 mA ölçüm ve arıza sinyal sınırları |

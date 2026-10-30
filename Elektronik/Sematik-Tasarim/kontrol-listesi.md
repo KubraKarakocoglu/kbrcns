@@ -1,4 +1,4 @@
-# Şematik Kontrol Listesi · v1.4
+# Şematik Kontrol Listesi · v1.5
 
 > **Kullanım:** Bu ana liste. Her projede `Yeni-Kayit.ps1 -Tur Proje` bunu `sematik-review.md` olarak proje klasörüne kopyalar; işaretlemeyi orada yap.
 > Bir konu veya hatadan yeni madde çıktığında **buraya** ekle ve sürüm numarasını artır.
@@ -88,6 +88,14 @@
 - [ ] Köprü/sensör beslemesi sensör datasheet'ine göre kararlı (duyarlılık beslemeye bağlı)
 - [ ] Op-amp/INA girişlerinde RF'e karşı küçük RC (C0G) var
 - [ ] Kenetleme diyotlarının arıza akımı besleme rayını yükseltmiyor
+- [ ] Her ADC ölçümü için hata bütçesi hesaplandı ve gereken etkin bit sayısıyla karşılaştırıldı
+- [ ] VDDA referans olarak kullanılıyorsa VREFINT ile besleme düzeltmesi planlandı (veya harici referans / oransal ölçüm)
+- [ ] Pin kapasitörü yük paylaşımı kuralına göre (12 bit için ≥ ~100 nF); yüksek kaynak direncinde örnekleme hızı buna göre düşük
+- [ ] Pil/besleme bölücüsünün sürekli akımı pil ömrüne göre kontrol edildi; MΩ'luk bölücü yerine gerekirse anahtarlı bölücü
+- [ ] Firmware: açılışta ADC kalibrasyonu; kanal değişiminde ilk örnek atılıyor
+- [ ] Firmware: her kanalda makul aralık kontrolü; aralık dışı ölçüm arıza olarak raporlanıyor
+- [ ] 4–20 mA girişlerinde şant gücü ve koruması yanlış bağlantıya (ör. 24 V) göre; NAMUR arıza sınırları uygulanıyor
+- [ ] Şebeke potansiyelindeki ölçümlerde yüksek gerilim direnç dizisi; debug için izolasyon planı
 
 ## 7. Dijital arayüzler
 
@@ -187,6 +195,7 @@
 
 | Sürüm | Tarih | Değişiklik |
 |---|---|---|
+| v1.5 | 2026-10-30 | "ADC ile ölçüm" konusundan 8 madde (bölüm 6) |
 | v1.4 | 2026-10-16 | Şematik ve PCB konularından (7 ders): bölüm 1, 2, 3, 6, 7, 9'a maddeler; yeni bölüm 12 (Yük sürme) ve 13 (PCB layout ve üretim); Kapanış bölüm 14 oldu |
 | v1.3 | 2026-10-14 | "Aliasing ve anti-aliasing filtresi" konusundan 5 madde (bölüm 6) |
 | v1.2 | 2026-10-12 | Komponent ve EMC derslerinden maddeler: bölüm 5'e 6 madde, yeni bölüm 10 (Pasif komponentler) ve 11 (EMC) |
