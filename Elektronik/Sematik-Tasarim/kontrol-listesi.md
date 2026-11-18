@@ -1,4 +1,4 @@
-# Şematik Kontrol Listesi · v1.6
+# Şematik Kontrol Listesi · v1.7
 
 > **Kullanım:** Bu ana liste. Her projede `Yeni-Kayit.ps1 -Tur Proje` bunu `sematik-review.md` olarak proje klasörüne kopyalar; işaretlemeyi orada yap.
 > Bir konu veya hatadan yeni madde çıktığında **buraya** ekle ve sürüm numarasını artır.
@@ -189,7 +189,31 @@
 - [ ] QFN termal pedi pasta penceresi %50–80
 - [ ] Üretim paketi tek revizyon adıyla; pick & place dönüş açısı dizgi firmasıyla teyit edildi
 
-## 14. Kapanış
+## 14. Şebeke ve yalıtım
+
+> Şebekeye bağlı ürünlerde işaretlenir. İlk 10 madde her şebekeli ürün içindir ([Şebeke güvenliği ve yalıtım](/Elektronik/Konular/sebeke-guvenligi-ve-yalitim/ozet.md)); sonraki 9 madde triyaklı faz kontrolü (dimmer) içeren ürünler içindir ([Triyak ve faz kontrolü](/Elektronik/Konular/triyak-ve-faz-kontrolu/ozet.md)).
+
+- [ ] Şebekeye bağlı bölge şematikte ve kartta çizgiyle işaretli; yalıtım türü (temel/çift/güçlendirilmiş), aşırı gerilim kategorisi ve kirlilik derecesi şematik notunda yazılı
+- [ ] Clearance ve creepage standart tablosundan (çalışma gerilimi, aşırı gerilim kategorisi, kirlilik derecesi, malzeme grubu) alındı; güçlendirilmiş yalıtımda bir üst darbe basamağı ve ikiye katlanmış creepage uygulandı
+- [ ] Şebeke girişinde sigorta var: gecikmeli (T), 250 V AC, kırma kapasitesi hattın kısa devre akımının üstünde (H); I²t açılış inrush'ına göre kontrol edildi
+- [ ] Hat–nötr arası kapasitörler X2, hat/nötr–toprak ve primer–sekonder kapasitörleri Y sınıfında ve sertifikalı (IEC 60384-14); güçlendirilmiş bariyeri köprüleyen kapasitör Y1 (veya seri Y2)
+- [ ] X kapasitörün deşarj direnci var; şebeke çekilince gerilim ürün standardının süresi içinde güvenli seviyeye iniyor (τ = R·C hesaplandı)
+- [ ] Y kapasitörlerin kaçak akımı I = 2π·f·C·V ile en kötü hat gerilimi ve kapasitör toleransında hesaplandı; dokunma akımı sınırının altında
+- [ ] Class I üründe koruma toprağı (PE) dokunulabilir iletkenlere düşük dirençle bağlı; PE hattında sigorta veya anahtar yok
+- [ ] Varistör (MOV) sigortanın arkasında; ömür sonu kısa devre için sigorta veya termal koruma var
+- [ ] İnrush sınırlayıcı (NTC) varsa enerji (½·C·V²) ve sıcakken kayıp kontrol edildi
+- [ ] İlk enerjilendirme ve ölçüm planı yazıldı: izolasyon trafosu, akım sınırlama (seri ampul veya akım sınırlı kaynak), diferansiyel prob
+- [ ] Triyak V_DRM ≥ 600 V (230 V hat); I_TSM soğuk lamba akımının ≥ 2 katı; kayıp hesaplandı ve T_j ≤ 110 °C (ortam 50 °C) sağlanıyor ya da soğutucu seçildi
+- [ ] Tetik devresi QI/QIII'e göre kuruldu: rastgele faz (non-zero-cross) optotriyak; R_g ≥ V_tepe / I_TSM(opto); opto LED akımı ≥ 2 × I_FT
+- [ ] Optotriyakın V_DRM marjı (264 V hatta tepe 373 V için), V_IORM/V_IOTM ve kriper/klirensi şebeke–SELV bariyeri gereksinimine göre kontrol edildi
+- [ ] Mandallama (I_L) ve tutma (I_H) akımı en küçük yük akımına göre kontrol edildi; en küçük yük, kapı darbe genişliği ve gerekirse aktif yük belirlendi
+- [ ] Snubber kaçak akımı (I = 2π·f·C·V), yükte oluşan hayalet gerilim ve direnç gücü (≤ 2·C·V²·f) hesaplandı; LED yükü destekleniyorsa C küçültüldü
+- [ ] Sıfır geçiş algılamada eşik, darbe genişliği (t_w) ve opto gecikmesi ölçüldü; tetik gecikmesi darbenin yükselen kenarına göre t_w kadar düzeltildi; 50 ve 60 Hz'de doğrulandı
+- [ ] Fail-safe: sıfır geçiş yoksa tetik yok; kapı darbesi donanım zamanlayıcıyla sabit genişlikte; açılışta ve watchdog sonrası kapalı başlıyor; geçersiz giriş (frekans, güç, darbe genişliği) kapalıya gidiyor
+- [ ] İki telli (şebeke potansiyelinde yüzen) elektroniğe debugger veya ölçüm yalnızca izolasyonla bağlanıyor; soğutucu/sekme (MT2) dokunulabilir değil veya yalıtımlı
+- [ ] Seri filtre indüktörünün doyma akımı yük tepe akımının üstünde; indüktör–snubber rezonansı (f₀, Z₀) hesaplandı ve sönümleme (F = R/(2·Z₀)) kontrol edildi
+
+## 15. Kapanış
 
 - [ ] Şematik bu listeyle ikinci bir göz tarafından (kişi veya Claude) review edildi
 - [ ] Bu tasarımdan çıkan dersler [hatalar-dersler.md](/Elektronik/Sematik-Tasarim/hatalar-dersler.md) dosyasına işlendi
@@ -198,6 +222,7 @@
 
 | Sürüm | Tarih | Değişiklik |
 |---|---|---|
+| v1.7 | 2026-11-18 | "Şebeke güvenliği ve yalıtım" (10 madde) ve "Triyak ve faz kontrolü" (9 madde) derslerinden yeni bölüm 14 (Şebeke ve yalıtım); Kapanış bölüm 15 oldu |
 | v1.6 | 2026-11-18 | "MIT 6.002 Ders 4–5" notlarından 3 madde (bölüm 7: seviye uyumu ve marj, histerezis, açık-drenaj pull-up) |
 | v1.5 | 2026-10-30 | "ADC ile ölçüm" konusundan 8 madde (bölüm 6) |
 | v1.4 | 2026-10-16 | Şematik ve PCB konularından (7 ders): bölüm 1, 2, 3, 6, 7, 9'a maddeler; yeni bölüm 12 (Yük sürme) ve 13 (PCB layout ve üretim); Kapanış bölüm 14 oldu |

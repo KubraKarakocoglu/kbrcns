@@ -30,6 +30,8 @@ Yeni konu:
 | 8 | [Haberleşme arayüzleri](haberlesme-arayuzleri/ozet.md) | UART, RS-485, I²C, SPI'nin elektriksel tarafı |
 | 9 | [PCB yerleşim ve iz çizimi](pcb-yerlesim-ve-iz-cizimi/ozet.md) | Şematiğin fiziksel karşılığı: yerleşim, iz, mesafe, toprak |
 | 10 | [Üretilebilirlik ve test için tasarım](uretilebilirlik-ve-test/ozet.md) | Kartın üretilip test edilebilmesi; üretim paketi |
+| 11 | [Şebeke güvenliği ve yalıtım](sebeke-guvenligi-ve-yalitim/ozet.md) | Şebekeli her kartın temeli: clearance/creepage, X/Y kapasitör, sigorta, PE, güvenli ölçüm |
+| 12 | [Triyak ve faz kontrolü (dimmer)](triyak-ve-faz-kontrolu/ozet.md) | Şebekede güç ayarı: triyak, tetik devresi, sıfır geçiş, LED sorunları, testli C zamanlama modülü |
 
 Her dersin başında bir **okuma planı** var (genelde 3 oturum). Bir ders için önerilen akış:
 
@@ -52,6 +54,8 @@ Her ders için bir pratik görev. **Şirkete ait şematik, değer veya doküman 
 | Haberleşme | RS-485 hattında osiloskopla A − B farkını ölç; boşta fark ≥ 200 mV mi, sonlandırma yalnızca uçlarda mı? |
 | PCB yerleşim | Mevcut bir kartta güç izlerinin genişliğini tabloyla kontrol et; GND düzleminde yarık ve ısıtıcı/röle dönüş yollarını izle |
 | Üretilebilirlik | Bir kartın üretim paketini dersteki tabloyla karşılaştır; eksik dosya veya revizyon karışıklığı var mı? |
+| Şebeke güvenliği | Şebekeli bir kartın şematiğinde şebeke bölgesini işaretle; en yakın iki iletken arasındaki mesafeyi clearance/creepage tablosuyla karşılaştır; Y kapasitörün kaçak akımını `I = 2π·f·C·V` ile hesapla |
+| Triyak ve faz kontrolü | Sıfır geçiş darbesini hat ile aynı ekranda ölç (izolasyon trafosu ve seri ampulle): genişlik ve merkez hesapla uyumlu mu? Snubber kaçağını hesapla, en küçük LED lambada kapalıyken hayalet parlama var mı bak |
 
 Bulduğun her hatayı ve dersi [hatalar-dersler.md](../Sematik-Tasarim/hatalar-dersler.md) dosyasına, yeni kontrol maddelerini [kontrol-listesi.md](../Sematik-Tasarim/kontrol-listesi.md) dosyasına ekle.
 
