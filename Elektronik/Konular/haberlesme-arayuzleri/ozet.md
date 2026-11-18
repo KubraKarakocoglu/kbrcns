@@ -2,7 +2,7 @@
 
 - **Oluşturma:** 2026-10-16
 - **Tüm kaynaklar:** [kaynaklar.md](kaynaklar.md)
-- **Bağlantılı:** [Direnç (pull-up, seri sonlandırma)](../../Komponentler/01-direnc/ozet.md#55-seri-direnç-sonlandırma-ve-koruma) · [EMC için kart tasarımı, bölüm 6–7](../../EMC/02-emc-icin-kart-tasarimi/ozet.md#6-konnektörler-kablolar-ve-filtreler) · [Ferrit boncuk](../../Komponentler/04-ferrit-boncuk/ozet.md) · Kontrol listesi bölüm 7–8
+- **Bağlantılı:** [Direnç (pull-up, seri sonlandırma)](../../Komponentler/01-direnc/ozet.md#55-seri-direnç-sonlandırma-ve-koruma) · [EMC için kart tasarımı, bölüm 6–7](../../EMC/02-emc-icin-kart-tasarimi/ozet.md#6-konnektörler-kablolar-ve-filtreler) · [Ferrit boncuk](../../Komponentler/04-ferrit-boncuk/ozet.md) · [MIT 6.002 Ders 4: Dijital soyutlama (mantık seviyeleri, gürültü marjı)](../../MIT-6.002/04-dijital-soyutlama/ozet.md) · Kontrol listesi bölüm 7–8
 
 > Bu ders protokolün yazılım tarafını değil, **tellerin ve dirençlerin** tarafını anlatır. Sayısal değerler tipik başlangıç noktalarıdır; transceiver ve MCU datasheet'i esastır.
 >

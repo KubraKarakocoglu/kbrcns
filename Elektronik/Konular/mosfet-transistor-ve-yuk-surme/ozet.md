@@ -2,7 +2,7 @@
 
 - **Oluşturma:** 2026-10-16
 - **Tüm kaynaklar:** [kaynaklar.md](kaynaklar.md)
-- **Bağlantılı:** [Bobin (flyback diyotu)](../../Komponentler/03-bobin-induktor/ozet.md) · [Direnç (LED akım sınırlama, pull-down)](../../Komponentler/01-direnc/ozet.md#52-led-akım-sınırlama) · [Mikrodenetleyici donanımı (GPIO)](../../Komponentler/05-mikrodenetleyici-donanimi/ozet.md#6-gpio) · Kontrol listesi bölüm 5 ve 12
+- **Bağlantılı:** [Bobin (flyback diyotu)](../../Komponentler/03-bobin-induktor/ozet.md) · [Direnç (LED akım sınırlama, pull-down)](../../Komponentler/01-direnc/ozet.md#52-led-akım-sınırlama) · [Mikrodenetleyici donanımı (GPIO)](../../Komponentler/05-mikrodenetleyici-donanimi/ozet.md#6-gpio) · [MIT 6.002 Ders 5: Dijital kapının içi (anahtar modeli, açık-drenaj)](../../MIT-6.002/05-dijital-kapinin-ici/ozet.md) · Kontrol listesi bölüm 5 ve 12
 
 > Sayısal değerler **tipik başlangıç noktalarıdır**; tasarım değeri için kullandığın MCU'nun ve anahtarın datasheet'i esastır.
 >

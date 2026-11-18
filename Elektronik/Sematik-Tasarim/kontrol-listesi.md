@@ -1,4 +1,4 @@
-# Şematik Kontrol Listesi · v1.5
+# Şematik Kontrol Listesi · v1.6
 
 > **Kullanım:** Bu ana liste. Her projede `Yeni-Kayit.ps1 -Tur Proje` bunu `sematik-review.md` olarak proje klasörüne kopyalar; işaretlemeyi orada yap.
 > Bir konu veya hatadan yeni madde çıktığında **buraya** ekle ve sürüm numarasını artır.
@@ -110,6 +110,9 @@
 - [ ] I²C cihaz adresleri listelendi; hat uzunluğu ve kapasitansı kart içiyle sınırlı
 - [ ] Çok sayıda SPI slave'inde kod çözücü kullanıldıysa enable'ı açılışta kapalı
 - [ ] Debug UART başlığı veya test pedi var
+- [ ] Her dijital bağlantıda sürücünün V_OH(min) / V_OL(max) değerleri ile alıcının V_IH(min) / V_IL(max) değerleri datasheet'ten (yük akımı, besleme ve sıcaklık uçlarında) karşılaştırıldı; iki gürültü marjı da pozitif ve yeterli
+- [ ] Yavaş veya gürültülü kenarlı girişler (sıfır geçiş, optokuplör çıkışı, mekanik kontak, uzun kablo) histerezisli (Schmitt-trigger) girişe veya karşılaştırıcıya bağlandı
+- [ ] Açık-drenaj / açık-kolektör hatlarda (I²C, alarm, interrupt, kablolu-AND) pull-up, alt sınır (`R ≥ (V_DD − V_OL) / I_OL`) ile yükselme süresinden gelen üst sınır arasında seçildi; hatta tek set pull-up var
 
 ## 8. Konnektörler ve dış dünya
 
@@ -195,6 +198,7 @@
 
 | Sürüm | Tarih | Değişiklik |
 |---|---|---|
+| v1.6 | 2026-11-18 | "MIT 6.002 Ders 4–5" notlarından 3 madde (bölüm 7: seviye uyumu ve marj, histerezis, açık-drenaj pull-up) |
 | v1.5 | 2026-10-30 | "ADC ile ölçüm" konusundan 8 madde (bölüm 6) |
 | v1.4 | 2026-10-16 | Şematik ve PCB konularından (7 ders): bölüm 1, 2, 3, 6, 7, 9'a maddeler; yeni bölüm 12 (Yük sürme) ve 13 (PCB layout ve üretim); Kapanış bölüm 14 oldu |
 | v1.3 | 2026-10-14 | "Aliasing ve anti-aliasing filtresi" konusundan 5 madde (bölüm 6) |

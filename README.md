@@ -11,6 +11,7 @@ kbrcns/
 │   ├── Komponentler/       Komponent dersleri: direnç, kapasitör, bobin... (NN-ad)
 │   ├── EMC/                EMC dersleri: temeller, kart tasarımı, testler (NN-ad)
 │   ├── Konular/            Uygulama konuları: güç, op-amp, haberleşme, şematik, PCB...
+│   ├── MIT-6.002/          MIT OCW 6.002 (Devreler ve Elektronik) Türkçe ders notları (NN-ad)
 │   ├── Sematik-Tasarim/    Kontrol listesi + hatalar ve dersler
 │   └── Projeler/           Proje kartları (NN-proje-adi)
 ├── Kaynaklar/              Kütüphane: video / kitap / PDF listesi

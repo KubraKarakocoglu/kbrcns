@@ -29,6 +29,12 @@ Durum: ⬜ Başlanmadı · 🟨 Devam ediyor · ✅ Bitti
 | [Ben Eater – 8-bit breadboard computer](https://www.youtube.com/playlist?list=PLowKtXNTBypGqImE405J2565dvjafglHU) | Video serisi | EN | Başlangıç | ⬜ | Lojik kapılardan CPU'ya |
 | w2aew (YouTube kanalı) | Video | EN | Başlangıç → Orta | ⬜ | Ölçüm temelleri, osiloskop kullanımı |
 
+## Elektronik – Üniversite dersleri
+
+| Kaynak | Tür | Dil | Seviye | Durum | Not |
+|---|---|---|---|---|---|
+| [MIT OCW 6.002 – Circuits and Electronics (Spring 2007)](https://www.ocw.mit.edu/courses/6-002-circuits-and-electronics-spring-2007) | Ders slaytları | EN | Başlangıç → Orta | 🟨 | Ders 4–5'in Türkçe notları hazır: [Elektronik/MIT-6.002](../Elektronik/MIT-6.002/README.md) · CC BY-NC-SA 4.0 |
+
 ## Elektronik – Kitap
 
 | Kaynak | Tür | Dil | Seviye | Durum | Not |

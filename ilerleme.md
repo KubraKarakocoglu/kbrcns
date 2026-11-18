@@ -48,6 +48,16 @@ Ana kaynak: _seçilecek (CS50x 2026 veya Kaan Aslan – CSD)_
 | 03 | [EMC testleri ve standartlar](Elektronik/EMC/03-emc-testleri-ve-standartlar/ozet.md) | ⬜ | - |
 <!-- EMC-EKLE -->
 
+## MIT 6.002 (Devreler ve Elektronik)
+
+Türkçe çalışma notları: [Elektronik/MIT-6.002](Elektronik/MIT-6.002/README.md)
+
+| No | Ders | Durum | Quiz |
+|---|---|---|---|
+| 04 | [Dijital soyutlama](Elektronik/MIT-6.002/04-dijital-soyutlama/ozet.md) | ⬜ | - |
+| 05 | [Dijital kapının içi](Elektronik/MIT-6.002/05-dijital-kapinin-ici/ozet.md) | ⬜ | - |
+<!-- MIT602-EKLE -->
+
 ## Projeler
 
 | No | Proje | Durum |
