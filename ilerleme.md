@@ -28,6 +28,7 @@ Ana kaynak: _seçilecek (CS50x 2026 veya Kaan Aslan – CSD)_
 | [ADC ile ölçüm: pratik rehber](Elektronik/Konular/adc-ile-olcum/ozet.md) | ⬜ | - |
 | [Şebeke güvenliği ve yalıtım](Elektronik/Konular/sebeke-guvenligi-ve-yalitim/ozet.md) | ⬜ | - |
 | [Triyak ve faz kontrolü (dimmer)](Elektronik/Konular/triyak-ve-faz-kontrolu/ozet.md) | ⬜ | - |
+| [Şebekeli güç kaynakları](Elektronik/Konular/sebekeli-guc-kaynaklari/ozet.md) | ⬜ | - |
 <!-- KONU-EKLE -->
 
 ## Komponentler

@@ -2,7 +2,7 @@
 
 - **Oluşturma:** 2026-11-18
 - **Tüm kaynaklar:** [kaynaklar.md](kaynaklar.md)
-- **Bağlantılı:** [PCB yerleşim, bölüm 6 (clearance/creepage)](../pcb-yerlesim-ve-iz-cizimi/ozet.md#6-mesafeler-clearance-ve-creepage) · [Kapasitör (X/Y)](../../Komponentler/02-kapasitor/ozet.md) · [Güç katı: koruma ve regülatör](../guc-kati-koruma-ve-regulator/ozet.md) · [EMC için kart tasarımı, bölüm 8](../../EMC/02-emc-icin-kart-tasarimi/ozet.md#8-güç-girişi) · [EMC testleri ve standartlar](../../EMC/03-emc-testleri-ve-standartlar/ozet.md) · Sonraki: [Triyak ve faz kontrolü](../triyak-ve-faz-kontrolu/ozet.md) · Şebekeli güç kaynakları (Ders 3, hazırlanıyor)
+- **Bağlantılı:** [PCB yerleşim, bölüm 6 (clearance/creepage)](../pcb-yerlesim-ve-iz-cizimi/ozet.md#6-mesafeler-clearance-ve-creepage) · [Kapasitör (X/Y)](../../Komponentler/02-kapasitor/ozet.md) · [Güç katı: koruma ve regülatör](../guc-kati-koruma-ve-regulator/ozet.md) · [EMC için kart tasarımı, bölüm 8](../../EMC/02-emc-icin-kart-tasarimi/ozet.md#8-güç-girişi) · [EMC testleri ve standartlar](../../EMC/03-emc-testleri-ve-standartlar/ozet.md) · Sonraki: [Triyak ve faz kontrolü](../triyak-ve-faz-kontrolu/ozet.md) · [Şebekeli güç kaynakları](../sebekeli-guc-kaynaklari/ozet.md)
 
 > Sayısal değerler **tipik başlangıç noktalarıdır**; tasarım değeri için ürünün **güvenlik standardı** ve onun **güncel baskısı** esastır. Bu derste standart tablolarından alınan sayılar açık kaynaklardan (TI, üretici notları) karşılaştırılarak doğrulandı; standartların ücretli tam metinleri bu notlarda yoktur. Sertifikaya giden bir üründe standardı temin et ve tabloyu **oradan** oku. Bu ders doğru soruları sormayı ve hesabı yapmayı öğretir; sertifikanın yerine geçmez.
 >
@@ -367,7 +367,7 @@ Her üründe **aynı sırayla** sor: (1) hangi ürün standardı? (2) şebeke-SE
 | Ürün | Tipik durum | İlk sorular |
 |---|---|---|
 | Duvar tipi **dimmer** | Şebekeye doğrudan bağlı; kullanıcı düğmeye dokunur → güçlendirilmiş bariyer; kaçak akım yük üzerinden akar | Standart EN 60669-2-1; OVC III varsay; snubber kaçağı ([Ders 2](../triyak-ve-faz-kontrolu/ozet.md)) |
-| Şebekeli **sensörlü lamba / hareket sensörü** | Kapasitif düşürücü ya da flyback; dış ortam → **PD3** | Tüm devre şebekede mi (düşürücü)? Dokunulabilir parça var mı? (Ders 3: hazırlanıyor) |
+| Şebekeli **sensörlü lamba / hareket sensörü** | Kapasitif düşürücü ya da flyback; dış ortam → **PD3** | Tüm devre şebekede mi (düşürücü)? Dokunulabilir parça var mı? ([Ders 3](../sebekeli-guc-kaynaklari/ozet.md)) |
 | **Kapı paneli / interkom** | Şebekeden güç kaynağı modülü, dışarıda SELV; kablo uzun | Modül sertifikalı mı? Şebekeyi kart üzerine mi taşıyoruz? |
 | **Gaz dedektörü** (24 V DC) | Çoğu SELV; şebekeli versiyonda modül veya trafo | Ev tipi dedektör standardı **EN 50194-1**; Ex gereksinimi ayrı ([PCB, bölüm 6](../pcb-yerlesim-ve-iz-cizimi/ozet.md#6-mesafeler-clearance-ve-creepage)) |
 | **Röleli çıkış** (230 V yük) | Kontaklar şebekede, bobin MCU tarafında | Röle bobin–kontak yalıtımı; kontak–PCB mesafeleri |

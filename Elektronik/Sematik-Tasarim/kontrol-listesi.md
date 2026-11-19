@@ -191,7 +191,7 @@
 
 ## 14. Şebeke ve yalıtım
 
-> Şebekeye bağlı ürünlerde işaretlenir. İlk 10 madde her şebekeli ürün içindir ([Şebeke güvenliği ve yalıtım](/Elektronik/Konular/sebeke-guvenligi-ve-yalitim/ozet.md)); sonraki 9 madde triyaklı faz kontrolü (dimmer) içeren ürünler içindir ([Triyak ve faz kontrolü](/Elektronik/Konular/triyak-ve-faz-kontrolu/ozet.md)).
+> Şebekeye bağlı ürünlerde işaretlenir. İlk 10 madde her şebekeli ürün içindir ([Şebeke güvenliği ve yalıtım](/Elektronik/Konular/sebeke-guvenligi-ve-yalitim/ozet.md)); sonraki 9 madde triyaklı faz kontrolü (dimmer) içeren ürünler içindir ([Triyak ve faz kontrolü](/Elektronik/Konular/triyak-ve-faz-kontrolu/ozet.md)); son 10 madde şebekeden beslenen güç kaynağı içeren ürünler içindir: ilk 3'ü kapasitif düşürücü, sonraki 7'si flyback için ([Şebekeli güç kaynakları](/Elektronik/Konular/sebekeli-guc-kaynaklari/ozet.md)).
 
 - [ ] Şebekeye bağlı bölge şematikte ve kartta çizgiyle işaretli; yalıtım türü (temel/çift/güçlendirilmiş), aşırı gerilim kategorisi ve kirlilik derecesi şematik notunda yazılı
 - [ ] Clearance ve creepage standart tablosundan (çalışma gerilimi, aşırı gerilim kategorisi, kirlilik derecesi, malzeme grubu) alındı; güçlendirilmiş yalıtımda bir üst darbe basamağı ve ikiye katlanmış creepage uygulandı
@@ -212,6 +212,16 @@
 - [ ] Fail-safe: sıfır geçiş yoksa tetik yok; kapı darbesi donanım zamanlayıcıyla sabit genişlikte; açılışta ve watchdog sonrası kapalı başlıyor; geçersiz giriş (frekans, güç, darbe genişliği) kapalıya gidiyor
 - [ ] İki telli (şebeke potansiyelinde yüzen) elektroniğe debugger veya ölçüm yalnızca izolasyonla bağlanıyor; soğutucu/sekme (MT2) dokunulabilir değil veya yalıtımlı
 - [ ] Seri filtre indüktörünün doyma akımı yük tepe akımının üstünde; indüktör–snubber rezonansı (f₀, Z₀) hesaplandı ve sönümleme (F = R/(2·Z₀)) kontrol edildi
+- [ ] Kapasitif düşürücü yalnızca dokunulabilir iletken parçası olmayan, tamamen kapalı ve yalıtkan gövdeli üründe kullanıldı (şematikte "⚠ tüm devre şebeke potansiyelinde" notu; bağlayıcı, düğme, anten, programlama portu yok); aksi hâlde flyback ya da sertifikalı modül seçildi
+- [ ] Kapasitif düşürücünün yük akımı en düşük ortalama akıma göre sınırlandı (207 V, C −%20: 4·f·C·(V_tepe − V_on)) ve %10 marj bırakıldı; Zener gücü (V_Z·I_ort,maks) ve R1 gücü (I_rms²·R1, en kötü hat ve C) hesaplandı
+- [ ] Dropper C1 X2 sınıfı; paralel boşaltma direnci R_b ≤ τ/C ile seçildi ve sürekli kaybı hesaplandı; R1'in açılış darbesi (tepe akım (V_tepe − V_on)/R1, enerji ½·C·(V_tepe − V_on)²) direnç, köprü (I_FSM) ve Zener için karşılandı
+- [ ] Flyback girişi: P_in = P_out/η, bulk 2–3 µF/W; V_DC,min en kötü durumda (düşük hat, C −%20, tam yük) hesaplandı ve şematik notuna yazıldı; V_DC,maks = √2·V_hat,maks ile bulk ve köprü gerilim marjı kontrol edildi
+- [ ] Flyback sarım oranı: V_RO = n·(V_o + V_F), D_maks ≤ 0,45–0,5; L_m DCM sınırının ≈ %10 altında seçildi (L_m toleransı dahil); I_pk, OCP eşiği (≈ 1,2·I_pk) ve trafo doyma akımı (> OCP eşiği) hesaplandı
+- [ ] MOSFET V_DSS ≥ (V_DC,maks + V_sn)/0,9 (sürekli ≤ %80 önerisi de kontrol edildi); çıkış diyodu V_RRM > 1,3·V_D ve I_F > 1,5·I_D,rms; çıkış kapasitörünün ripple akımı ve ESR'si hesaplandı
+- [ ] RCD clamp: V_sn = 2–2,5·V_RO, P_sn = ½·L_lk·I_pk²·f_s·V_sn/(V_sn − V_RO), R_sn gücü (≥ 2× marj), C_sn ve ultra hızlı clamp diyodu (V_RRM ≥ V_DSS) hesaplandı; L_lk trafo şartnamesinde üst sınırla belirtildi ve ölçüldü
+- [ ] Trafo çizimi güvenlik belgesi olarak tamamlandı: L_m (±%), L_lk üst sınırı, doyma akımı, sarım sayıları, pin numarası ve nokta (polarite), güçlendirilmiş yalıtım (TIW/margin bant, 3000 Vac, kriper/klirens); bariyer (T1, opto, Y1) şematikte işaretli
+- [ ] Geri besleme: TL431 bölücüsünün toleransı (V_ref, I_ref·R1, direnç) hesaplandı; katot akımı ≥ I_min (R_bias); opto akımı CTR_min ve yaşlanmayla boyutlandı; kararlılık CTR_min/CTR_maks, hat ve yük uçlarında ölçülecek; geri besleme yolu açık devre olursa çıkışı sınırlayan OVP (aux sargı ya da ikincil) var
+- [ ] Korumalar ve bekleme: OCP (LEB dahil), hiccup, OTP, brown-out ve soft-start davranışı tanımlı; X2 deşarj ve start-up kayıpları dahil yüksüz giriş gücü bütçesi çıkarıldı (dış güç kaynağında ≤ 0,100 W; ürün grubuna göre yönetmeliği kontrol et)
 
 ## 15. Kapanış
 
@@ -222,7 +232,7 @@
 
 | Sürüm | Tarih | Değişiklik |
 |---|---|---|
-| v1.7 | 2026-11-18 | "Şebeke güvenliği ve yalıtım" (10 madde) ve "Triyak ve faz kontrolü" (9 madde) derslerinden yeni bölüm 14 (Şebeke ve yalıtım); Kapanış bölüm 15 oldu |
+| v1.7 | 2026-11-19 | "Şebeke güvenliği ve yalıtım" (10 madde), "Triyak ve faz kontrolü" (9 madde) ve "Şebekeli güç kaynakları" (10 madde) derslerinden yeni bölüm 14 (Şebeke ve yalıtım); Kapanış bölüm 15 oldu |
 | v1.6 | 2026-11-18 | "MIT 6.002 Ders 4–5" notlarından 3 madde (bölüm 7: seviye uyumu ve marj, histerezis, açık-drenaj pull-up) |
 | v1.5 | 2026-10-30 | "ADC ile ölçüm" konusundan 8 madde (bölüm 6) |
 | v1.4 | 2026-10-16 | Şematik ve PCB konularından (7 ders): bölüm 1, 2, 3, 6, 7, 9'a maddeler; yeni bölüm 12 (Yük sürme) ve 13 (PCB layout ve üretim); Kapanış bölüm 14 oldu |
