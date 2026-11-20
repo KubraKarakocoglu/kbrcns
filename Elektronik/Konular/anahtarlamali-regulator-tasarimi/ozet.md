@@ -704,7 +704,7 @@ Histerezis, kaynağın yük altındaki çökmesinden **büyük** olmalıdır; yo
 
 `V_out = V_ref·(1 + R_t/R_b)`; `R_b` = 10 kΩ, `V_ref` = 0,8 V → `R_t` hesabı **52,5 kΩ** → E96 **52,3 kΩ** → `V_out` = **4,984 V** (%−0,32).
 - **Akım:** bölücü 80 µA çeker (0,40 mW). Büyük direnç gürültüye ve FB pini kaçak akımına duyarlılık getirir; küçük direnç hafif yükte bile kayıp demektir.
-- **Tolerans:** %1 dirençle yalnız bölücüden gelen en kötü durum hatası ±**%1,7**; `V_ref` toleransı ayrıca eklenir. Hassas çıkış için %0,1 direnç ya da trim.
+- **Tolerans:** %1 dirençle yalnız bölücüden gelen en kötü durum hatası **±%1,7**; `V_ref` toleransı ayrıca eklenir. Hassas çıkış için %0,1 direnç ya da trim.
 - **FB yolu:** bölücüyü IC'nin FB pinine **bitişik** koy, `V_out` sensing hattını bobinden uzak ve sıcak düğümlerden izole yönlendir (bölüm 14).
 
 ### 10.3 Soft-start
