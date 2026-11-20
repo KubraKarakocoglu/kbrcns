@@ -29,6 +29,7 @@ Ana kaynak: _seçilecek (CS50x 2026 veya Kaan Aslan – CSD)_
 | [Şebeke güvenliği ve yalıtım](Elektronik/Konular/sebeke-guvenligi-ve-yalitim/ozet.md) | ⬜ | - |
 | [Triyak ve faz kontrolü (dimmer)](Elektronik/Konular/triyak-ve-faz-kontrolu/ozet.md) | ⬜ | - |
 | [Şebekeli güç kaynakları](Elektronik/Konular/sebekeli-guc-kaynaklari/ozet.md) | ⬜ | - |
+| [Anahtarlamalı regülatör tasarımı](Elektronik/Konular/anahtarlamali-regulator-tasarimi/ozet.md) | ⬜ | - |
 <!-- KONU-EKLE -->
 
 ## Komponentler

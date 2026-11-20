@@ -33,6 +33,7 @@ Yeni konu:
 | 11 | [Şebeke güvenliği ve yalıtım](sebeke-guvenligi-ve-yalitim/ozet.md) | Şebekeli her kartın temeli: clearance/creepage, X/Y kapasitör, sigorta, PE, güvenli ölçüm |
 | 12 | [Triyak ve faz kontrolü (dimmer)](triyak-ve-faz-kontrolu/ozet.md) | Şebekede güç ayarı: triyak, tetik devresi, sıfır geçiş, LED sorunları, testli C zamanlama modülü |
 | 13 | [Şebekeli güç kaynakları](sebekeli-guc-kaynaklari/ozet.md) | Şebekeden küçük DC: kapasitif düşürücü (30 mA) ve izolasyonlu flyback; clamp, TL431 geri besleme, bekleme gücü |
+| 14 | [Anahtarlamalı regülatör tasarımı](anahtarlamali-regulator-tasarimi/ozet.md) | Kart içi DC-DC: buck, boost ve ters buck-boost; `L` ve `C` seçimi, kayıp bütçesi, döngü kompanzasyonu, hot-plug, sıcak döngü yerleşimi |
 
 Her dersin başında bir **okuma planı** var (genelde 3 oturum). Bir ders için önerilen akış:
 
@@ -58,6 +59,7 @@ Her ders için bir pratik görev. **Şirkete ait şematik, değer veya doküman 
 | Şebeke güvenliği | Şebekeli bir kartın şematiğinde şebeke bölgesini işaretle; en yakın iki iletken arasındaki mesafeyi clearance/creepage tablosuyla karşılaştır; Y kapasitörün kaçak akımını `I = 2π·f·C·V` ile hesapla |
 | Triyak ve faz kontrolü | Sıfır geçiş darbesini hat ile aynı ekranda ölç (izolasyon trafosu ve seri ampulle): genişlik ve merkez hesapla uyumlu mu? Snubber kaçağını hesapla, en küçük LED lambada kapalıyken hayalet parlama var mı bak |
 | Şebekeli güç kaynakları | Sertifikalı bir adaptörün **çıkışında** (şebeke tarafına dokunmadan) dalgalanmayı kısa toprak yayıyla ölç; yükü %10–100 değiştirip `ΔV`'yi dersteki formülle karşılaştır. Bir flyback şemasında trafo, opto ve Y1'den oluşan bariyeri işaretle; `V_DC,min`, `I_pk` ve `P_sn` hesabını kendi örneğinle yap |
+| Anahtarlamalı regülatör | Kartındaki bir buck ya da boost'ta çıkış dalgalanmasını ve SW düğümünü kısa toprak yayıyla ölç; `ΔI_L`, `I_Cin,rms` ve `I_MAXOUT`'u dersteki formüllerle hesaplayıp datasheet ile karşılaştır. Yük adımında (%10 ↔ %90) çıkış sapmasına bak; gerçek adaptör ve kabloyla `V_in` tepesini yakala |
 
 Bulduğun her hatayı ve dersi [hatalar-dersler.md](../Sematik-Tasarim/hatalar-dersler.md) dosyasına, yeni kontrol maddelerini [kontrol-listesi.md](../Sematik-Tasarim/kontrol-listesi.md) dosyasına ekle.
 

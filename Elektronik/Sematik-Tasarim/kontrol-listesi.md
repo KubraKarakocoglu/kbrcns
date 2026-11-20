@@ -1,4 +1,4 @@
-# Şematik Kontrol Listesi · v1.7
+# Şematik Kontrol Listesi · v1.8
 
 > **Kullanım:** Bu ana liste. Her projede `Yeni-Kayit.ps1 -Tur Proje` bunu `sematik-review.md` olarak proje klasörüne kopyalar; işaretlemeyi orada yap.
 > Bir konu veya hatadan yeni madde çıktığında **buraya** ekle ve sürüm numarasını artır.
@@ -32,6 +32,8 @@
 
 ## 3. Regülatörler
 
+> İlk 9 madde genel regülatör kontrolleridir; son 10 madde anahtarlamalı regülatör (buck, boost, ters buck-boost) tasarımı içindir ([Anahtarlamalı regülatör tasarımı](/Elektronik/Konular/anahtarlamali-regulator-tasarimi/ozet.md)).
+
 - [ ] **LDO dropout:** en düşük giriş geriliminde Vin − Vout ≥ dropout (tüm sıcaklık ve yük aralığında)
 - [ ] **LDO ısı:** P = (Vin − Vout) × I_yük; Tj = Ta + P × θJA < Tj_max (marjlı)
 - [ ] **LDO kararlılık:** çıkış kapasitörünün tipi ve ESR aralığı datasheet'e uygun (bazı LDO'lar düşük ESR'li seramikle kararsızdır)
@@ -41,6 +43,16 @@
 - [ ] Analog besleme dijitalden ayrılması gerekiyor mu? (ferrit boncuk veya LC filtre)
 - [ ] Güç bütçesi tablosu şematikte; her rayın gerilimi ve en yüksek akımı yazılı
 - [ ] Hassas analog varsa buck'ın hafif yük modu (PFM) değerlendirildi; gerekirse FPWM
+- [ ] **Topoloji ve aralık:** topoloji `V_in` aralığına göre seçildi (buck: `V_in > V_out`; boost: `V_in,maks < V_out`; aralık `V_out`'u kesiyorsa ya da çıkış negatifse ters buck-boost, SEPIC veya 4 anahtarlı buck-boost); `D = V_out/(V_in·η)` en düşük ve en yüksek `V_in`'de hesaplandı; `V_in,maks ≤ V_out/(f_s·t_on,min)` sağlanıyor
+- [ ] **İndüktör:** `L = V_out·(V_in,maks − V_out)/(ΔI_L·V_in,maks·f_s)` ile `ΔI_L` ≈ 0,2–0,4·I_out (boost'ta `I_L,ort`) seçildi; `I_sat ≥ I_LIM,maks` (%10 marjla) ve kısa devrede algılama gecikmesi aşımı `V_in,maks·t_gecikme/L` eklenince de doymuyor; `I_rms` (ısınma) ve DCR kaybı (`I_rms²·DCR`) hesaplandı
+- [ ] **Çıkış kapasitörü:** seramiğin DC bias sonrası **etkin** değeri kullanıldı; `ΔV = ΔI_L/(8·f_s·C) + ESR·ΔI_L` hesaplandı; yük bırakma aşımı (`C_out ≥ L·ΔI²/(2·V_out·V_aşım)`) sınırı sağlanıyor; boost'ta ESR kısmı `ESR·I_pk` ile ve çıkış ripple akımı `I_out·√(D/(1−D))` kapasitörün akım derecesiyle karşılaştırıldı
+- [ ] **Giriş kapasitörü:** buck'ta `I_Cin,rms = I_out·√(D·(1−D))` (en kötü `I_out/2`) kapasitörün ripple akımı derecesinin altında; IC pinlerine bitişik HF seramik (0,1–0,47 µF) ve bulk kapasitör birlikte var; `ΔV_in = I_out·D·(1−D)/(f_s·C_in)` etkin kapasiteyle hesaplandı
+- [ ] **Kontrol döngüsü:** `f_c` ≈ `f_s/10`, faz payı ≥ 45° (hedef 50–60°), GM ≥ 6 dB; `C_out` ±%20 ve hafif yükte de kontrol edilecek; boost ve ters buck-boost'ta `f_c ≤ f_RHPZ/5` (en kötü durum: tam yük, düşük `V_in`); FB bölücüsünün üstünde döngü ölçümü için enjeksiyon direnci yeri (10–50 Ω) bırakıldı
+- [ ] **UVLO, FB ve soft-start:** EN bölücüsüyle `V_on`, `V_off` ve histerezis ayarlandı (histerezis kaynağın yük altındaki çökmesinden büyük); en yüksek `V_in`'de EN pini gerilimi mutlak azami değerin altında; FB bölücü hatası (%1 dirençle ≈ ±%1,7 + `V_ref` toleransı) kabul edilebilir; soft-start inrush akımı `C_out·V_out/t_ss` + yük akımı `I_LIM` altında; pre-bias açılış davranışı datasheet'ten okundu
+- [ ] **Akım limiti ve kısa devre:** `I_MAXOUT = I_LIM,min − ΔI_L/2 ≥ I_out,maks`; kısa devre davranışı (foldback ya da hiccup) datasheet'ten okundu ve ölçüldü; boost'ta çıkış kısa devresini IC kesemez ve kapalıyken `V_out ≈ V_in − V_F` olur: giriş sigortası/akım sınırı ya da yük anahtarı (true-shutdown) var
+- [ ] **Giriş hattı etkileşimi:** hot-plug tepesi gerçek adaptör ve kabloyla ölçüldü; korumasız girişte `V_in,nom`'un 2,5×'u (AN88: 24 V girişte 57,2 V ölçüldü) IC'nin mutlak azami gerilimi ve kapasitör derecesinin altında, değilse damper (Al-elektrolitik, `C_D ≥ 4·C_in`) ya da TVS var; giriş filtresi varsa `Z_out` tepesi ≤ `|R_in|/2` (`|R_in| = V_in²/P_in`, ≥ 6 dB marj)
+- [ ] **Kayıp, ısı ve hafif yük:** kayıp bütçesi (iletim + anahtarlama + sabit) çıkarıldı; `T_j = T_a + P·θ_JA` marjlı; hafif yükte verimi sabit kayıp tabanı belirler: 10 mA ile tam yük arasındaki yük aralığı değerlendirildi; PFM/FPWM seçimi hassas analog ve işitilebilir ses (< 20 kHz) açısından yapıldı
+- [ ] **Yerleşim:** sıcak döngü (C_in–HS–LS) en küçük; HF C_in VIN ve GND pinlerine bitişik, aynı katmanda, via'sız; SW bakırı minimum; FB bölücü IC'ye bitişik ve FB izi SW ile bobinden uzak; kesintisiz GND düzlemi; IC ısı pedi altında termal via; bobinin altında ve yakınında hassas iz yok
 
 ## 4. Decoupling
 
@@ -232,6 +244,7 @@
 
 | Sürüm | Tarih | Değişiklik |
 |---|---|---|
+| v1.8 | 2026-11-20 | "Anahtarlamalı regülatör tasarımı" dersinden 10 madde (bölüm 3, Regülatörler) |
 | v1.7 | 2026-11-19 | "Şebeke güvenliği ve yalıtım" (10 madde), "Triyak ve faz kontrolü" (9 madde) ve "Şebekeli güç kaynakları" (10 madde) derslerinden yeni bölüm 14 (Şebeke ve yalıtım); Kapanış bölüm 15 oldu |
 | v1.6 | 2026-11-18 | "MIT 6.002 Ders 4–5" notlarından 3 madde (bölüm 7: seviye uyumu ve marj, histerezis, açık-drenaj pull-up) |
 | v1.5 | 2026-10-30 | "ADC ile ölçüm" konusundan 8 madde (bölüm 6) |

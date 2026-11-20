@@ -2,7 +2,7 @@
 
 - **Oluşturma:** 2026-10-16
 - **Tüm kaynaklar:** [kaynaklar.md](kaynaklar.md)
-- **Bağlantılı:** [Güç ve decoupling](../guc-ve-decoupling/ozet.md) · [Bobin (buck hesabı)](../../Komponentler/03-bobin-induktor/ozet.md) · [Kapasitör (inrush, hold-up)](../../Komponentler/02-kapasitor/ozet.md) · [EMC için kart tasarımı, bölüm 8](../../EMC/02-emc-icin-kart-tasarimi/ozet.md#8-güç-girişi) · Kontrol listesi bölüm 2–3
+- **Bağlantılı:** [Güç ve decoupling](../guc-ve-decoupling/ozet.md) · [Bobin (buck hesabı)](../../Komponentler/03-bobin-induktor/ozet.md) · [Kapasitör (inrush, hold-up)](../../Komponentler/02-kapasitor/ozet.md) · [EMC için kart tasarımı, bölüm 8](../../EMC/02-emc-icin-kart-tasarimi/ozet.md#8-güç-girişi) · [Anahtarlamalı regülatör tasarımı (ayrıntılı hesap)](../anahtarlamali-regulator-tasarimi/ozet.md) · Kontrol listesi bölüm 2–3
 
 > Sayısal değerler **tipik başlangıç noktalarıdır**; tasarım değeri için kullandığın parçanın datasheet'i ve ürün standardı esastır. Örneklerdeki parça numaraları yalnızca örnektir.
 >
