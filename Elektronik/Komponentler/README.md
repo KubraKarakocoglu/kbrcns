@@ -18,7 +18,7 @@ Her komponent dersi `NN-ad/` klasöründe, aynı yapıda:
 | 04 | Ferrit boncuk | İndüktöre benzer ama amacı farklı: gürültüyü ısıya çevirmek |
 | 05 | Mikrodenetleyici donanımı | Önceki tüm komponentlerin bir araya geldiği yer |
 
-Sonraki adaylar: diyot ve TVS, MOSFET, op-amp, regülatörler (LDO ve buck), konnektörler.
+Sonraki adaylar: diyot ve TVS, MOSFET, op-amp, regülatörler (LDO ve buck), konnektörler. Donanım serisinde buck, boost ve ters buck-boost [Ders 4](../Konular/anahtarlamali-regulator-tasarimi/ozet.md)'te hazırdır; diyotlar Ders 18 olarak planlıdır. Tam harita: [Donanım yol haritası](../Donanim-Yol-Haritasi.md).
 
 Yeni komponent dersi açmak için:
 

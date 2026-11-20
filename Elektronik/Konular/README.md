@@ -18,6 +18,8 @@ Yeni konu:
 
 ## Önerilen çalışma sırası
 
+Donanım derslerinin **tam sırası, ön koşulları ve planlı dersleri**: [Donanım yol haritası](../Donanim-Yol-Haritasi.md).
+
 | # | Konu | Neden bu sırada |
 |---|---|---|
 | 1 | [Şematik çizim ve dokümantasyon](sematik-cizim-ve-dokumantasyon/ozet.md) | Her tasarımın belgesi; review ve üretim bunu okur |
@@ -65,13 +67,13 @@ Bulduğun her hatayı ve dersi [hatalar-dersler.md](../Sematik-Tasarim/hatalar-d
 
 ## Sonraki konu adayları
 
-| Konu | Neden |
-|---|---|
-| Gaz sensörü türleri (pellistor, MOS, NDIR, elektrokimyasal) | Hangi sensör nerede; ön uç ve kalibrasyon farkları |
-| Ex (ATEX/IECEx) temelleri ve kendinden güvenlik | Patlayıcı ortam cihazlarında tasarım kuralları |
-| Fonksiyonel güvenlik (SIL) temelleri | Güvenlik fonksiyonlarının arıza davranışı ve teşhisi |
-| Gerilim referansları ve hassas ölçüm | Ölçüm doğruluğunun temeli |
-| Termal tasarım | Isı hesabı, soğutma, sıcaklığa bağlı ömür |
-| Düşük güç ve pil tasarımı | Pilli/taşınabilir cihazlar için |
+| Konu | Neden | Donanım serisinde |
+|---|---|---|
+| Gaz sensörü türleri (pellistor, MOS, NDIR, elektrokimyasal) | Hangi sensör nerede; ön uç ve kalibrasyon farkları | Ders 7 ve 9 (planlı) |
+| Ex (ATEX/IECEx) temelleri ve kendinden güvenlik | Patlayıcı ortam cihazlarında tasarım kuralları | Ders 23'te kavramsal giriş; ayrıntı ayrı ders adayı |
+| Fonksiyonel güvenlik (SIL) temelleri | Güvenlik fonksiyonlarının arıza davranışı ve teşhisi | Ders 24 (planlı) |
+| Gerilim referansları ve hassas ölçüm | Ölçüm doğruluğunun temeli | Ders 13 (planlı) |
+| Termal tasarım | Isı hesabı, soğutma, sıcaklığa bağlı ömür | Ders 12 (planlı) |
+| Düşük güç ve pil tasarımı | Pilli/taşınabilir cihazlar için | Ders 6 ve 15 (planlı) |
 
 > Her konu bittiğinde "Şematik kontrol listesine eklenenler" bölümünü [kontrol-listesi.md](../Sematik-Tasarim/kontrol-listesi.md) dosyasına işle.

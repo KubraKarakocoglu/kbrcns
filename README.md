@@ -21,6 +21,8 @@ kbrcns/
 └── ilerleme.md             Genel ilerleme tablosu
 ```
 
+**Donanım dersleri:** sıra, ön koşul ve kapsam haritası [Elektronik/Donanim-Yol-Haritasi.md](Elektronik/Donanim-Yol-Haritasi.md) dosyasındadır.
+
 ## İlk kurulum (her bilgisayarda bir kez)
 
 1. Repoyu klonla. OneDrive, Masaüstü veya Belgeler gibi **senkronize edilen klasörlere koyma**; iki senkron sistemi aynı dosyalar üzerinde çakışır.
